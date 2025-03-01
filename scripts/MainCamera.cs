@@ -32,19 +32,20 @@ public partial class MainCamera : Camera3D
 		}
 		if (anchor != null) {
 			float current_dist = Transform.Origin.DistanceTo(anchor.Transform.Origin);
-			float coeff = 0;
+			float correction = 0;
 			if (current_dist > tether_max) {
-				coeff = 1; 
+				correction = 1-(tether_max/current_dist);
 			}
 			else if (current_dist < tether_min) {
-				coeff = -1;
+				correction = 1-(tether_min/current_dist);
 			}
-			float t = 1 - 1/(float)Math.Pow(Math.E,(float)delta*tether_lerp);
 			Vector3 destination = Transform.Origin.Lerp(
-				anchor.Transform.Origin,
-				t*coeff
+				target.Transform.Origin,
+				correction
 			);
-			Vector3 offset = destination - Transform.Origin;
+			float s = 1-1/(float) Math.Pow(Math.E,tether_lerp*(float)delta);
+			Vector3 scale  = new Vector3 (s,s,s);
+			Vector3 offset = (destination - Transform.Origin) * scale;
 			Transform = Transform.Translated(offset);
 		}
 	}

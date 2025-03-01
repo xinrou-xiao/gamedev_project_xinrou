@@ -1,18 +1,29 @@
 shader_type spatial;
-render_mode world_vertex_coords;
+
+varying vec3 world_vertex;
+
+bool trues_even(bvec3 val) {
+	return (int(val.x)+int(val.y)+int(val.z)) % 2 == 0;
+}
+
+bool xor(bool a, bool b) {
+	return (a||b) && !(a&&b);
+}
+
 
 void vertex() {
-	// Called for every vertex the material is visible on.
+	world_vertex = VERTEX.xyz;
 }
 
 void fragment() {
 	// Called for every pixel the material is visible on.
-	vec3 wrld_vertex = (inverse(VIEW_MATRIX) * vec4(VERTEX, 1.0)).xyz;
-	vec3 inner_coordinate = mod(wrld_vertex+0.001,1);
-	ivec3 rounded_coordinate = ivec3(wrld_vertex - inner_coordinate);
-	bvec3 is_even = equal(rounded_coordinate % 2,ivec3(0,0,0));
-	bool total_even = (int(is_even.x)+int(is_even.y)+int(is_even.z))%2 == 0;
-	if (total_even) {
+	bvec3 is_positive = greaterThanEqual(world_vertex,vec3(0,0,0));
+	vec3 rounded_coordinate = floor(world_vertex+0.0001);
+	ivec3 inner_coordinate = ivec3(world_vertex - rounded_coordinate);
+	ivec3 tile_coordinate = ivec3(rounded_coordinate);
+	bvec3 is_even = equal(tile_coordinate % 2,ivec3(0,0,0));
+	bool is_black = trues_even(is_even);
+	if (is_black) {
 		ALBEDO = vec3(0,0,0);
 	}
 }
