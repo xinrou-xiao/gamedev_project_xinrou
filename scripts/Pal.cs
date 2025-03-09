@@ -1,15 +1,21 @@
 using Godot;
 using System;
 
+
 public partial class Pal : RigidThing
 {
 	
 	[Export]
 	public Node3D Camera { get; set; } = null;
 	
+	Vector3 LastFacing = new Vector3(1,0,0);
+	double  AverageFacingAngularVelocity = 0.0;
+	MeshInstance3D CoreMesh;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		CoreMesh = FindChild("CoreMesh") as MeshInstance3D;
 	}
 	
 	public Vector3 CalculateMovementForce(double delta)
@@ -48,6 +54,17 @@ public partial class Pal : RigidThing
 		Vector3 movement_force = CalculateMovementForce(delta);
 		float scale = (float)delta;
 		ApplyCentralImpulse(movement_force*new Vector3(scale,scale,scale));
+		if (LinearVelocity.Length() > 0.01){
+			Vector3 facing = LinearVelocity.Normalized();
+			ShaderMaterial shader = CoreMesh.GetActiveMaterial(0) as ShaderMaterial;
+			shader.SetShaderParameter("facing",(new Transform3D()).LookingAt(LinearVelocity));
+			double dot_product  = Math.Min(1.0,facing.Dot(LastFacing));
+			double angle_change = Math.Acos(dot_product);
+			double angular_velocity = angle_change / delta;
+			AverageFacingAngularVelocity = AverageFacingAngularVelocity*0.6 + angular_velocity*0.4;
+			shader.SetShaderParameter("facing_angular_velocity",AverageFacingAngularVelocity);
+			LastFacing = facing;
+		}
 	}
 	
 }

@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dm4tu84xol3yq"]
+[gd_scene load_steps=14 format=3 uid="uid://dm4tu84xol3yq"]
 
 [ext_resource type="Script" path="res://scripts/Pal.cs" id="1_pgqh7"]
 [ext_resource type="Script" path="res://scripts/MainCamera.cs" id="1_yab11"]
+[ext_resource type="Shader" path="res://shaders/pal.gdshader" id="3_68lkm"]
+[ext_resource type="Script" path="res://scenes/Zone.cs" id="3_awqsp"]
 [ext_resource type="Shader" path="res://shaders/checkerboard.gdshader" id="3_rtduw"]
 
 [sub_resource type="Resource" id="Resource_ma2nj"]
@@ -9,6 +11,26 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_gy7ai"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ruixa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wqs0n"]
+render_priority = 0
+shader = ExtResource("3_68lkm")
+shader_parameter/fuzz_magnetude = 0.2
+shader_parameter/fuzz_period = 0.01
+shader_parameter/fuzz_rate = 0.1
+shader_parameter/inter_eye_angle = 0.5
+shader_parameter/pupil_rise_angle = 0.2
+shader_parameter/pupil_outter_angle = 0.3
+shader_parameter/pupil_inner_angle = 0.2
+shader_parameter/eye_fuzz = 0.7
+shader_parameter/mouth_rise_angle = -0.1
+shader_parameter/mouth_width_angle = 0.5
+shader_parameter/mouth_line_width_angle = 0.01
+shader_parameter/facing = null
+shader_parameter/facing_angular_velocity = 0.0
+shader_parameter/turn_fuzz = 0.435
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r1rkw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ubl3m"]
 size = Vector2(20, 20)
@@ -40,20 +62,32 @@ Subject = SubResource("Resource_ma2nj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pal"]
 shape = SubResource("SphereShape3D_gy7ai")
 
-[node name="mesh" type="MeshInstance3D" parent="Pal"]
+[node name="CoreMesh" type="MeshInstance3D" parent="Pal"]
 mesh = SubResource("SphereMesh_ruixa")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_wqs0n")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Pal"]
 
-[node name="Floor2" type="RigidBody3D" parent="."]
+[node name="Place" type="Area3D" parent="."]
+script = ExtResource("3_awqsp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Place"]
+shape = SubResource("BoxShape3D_r1rkw")
+
+[node name="Floor2" type="RigidBody3D" parent="Place"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 freeze = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Place/Floor2"]
 mesh = SubResource("PlaneMesh_ubl3m")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_yfpe3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Place/Floor2"]
 shape = SubResource("BoxShape3D_kxw6x")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.3, 0)
+
+[node name="LightmapProbe" type="LightmapProbe" parent="."]

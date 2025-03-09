@@ -1,12 +1,8 @@
 using Godot;
 using System;
 
-public partial class Place : Area3D, IThing
+public partial class Zone : Area3D
 {
-
-	public ThingSubject Subject { get; set; }
-	public ThingContent Content { get; set; }
-	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
