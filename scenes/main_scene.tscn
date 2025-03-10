@@ -1,0 +1,149 @@
+[gd_scene load_steps=21 format=3 uid="uid://dm4tu84xol3yq"]
+
+[ext_resource type="Script" path="res://scripts/MainCamera.cs" id="1_50q5v"]
+[ext_resource type="Script" path="res://scripts/HudLayer.cs" id="1_kem2q"]
+[ext_resource type="Script" path="res://scripts/Pal.cs" id="2_3bwr8"]
+[ext_resource type="Script" path="res://scripts/thing/ThingSubject.cs" id="3_0gy1i"]
+[ext_resource type="Shader" path="res://shaders/pal.gdshader" id="4_wv7rl"]
+[ext_resource type="Script" path="res://scripts/Zone.cs" id="5_vvc1a"]
+[ext_resource type="Shader" path="res://shaders/checkerboard.gdshader" id="6_oswgg"]
+[ext_resource type="PackedScene" uid="uid://ctvy2lw5wkul5" path="res://scenes/rect_wall.tscn" id="7_5nv4i"]
+
+[sub_resource type="Resource" id="Resource_gp3no"]
+script = ExtResource("3_0gy1i")
+Name = "Pal"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gy7ai"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ruixa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wqs0n"]
+render_priority = 0
+shader = ExtResource("4_wv7rl")
+shader_parameter/fuzz_magnetude = 0.36
+shader_parameter/fuzz_period = -0.01
+shader_parameter/fuzz_rate = 0.215
+shader_parameter/inter_eye_angle = 0.475
+shader_parameter/pupil_rise_angle = 0.4
+shader_parameter/pupil_outter_angle = 0.3
+shader_parameter/pupil_inner_angle = 0.235
+shader_parameter/eye_fuzz = 0.1
+shader_parameter/mouth_rise_angle = -0.1
+shader_parameter/mouth_width_angle = 0.5
+shader_parameter/mouth_line_width_angle = 0.01
+shader_parameter/facing = null
+shader_parameter/facing_angular_velocity = 0.0
+shader_parameter/turn_fuzz = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r1rkw"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ubl3m"]
+size = Vector2(20, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yfpe3"]
+render_priority = -1
+shader = ExtResource("6_oswgg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kxw6x"]
+size = Vector3(20, 0.01, 20)
+
+[sub_resource type="Resource" id="Resource_735vj"]
+script = ExtResource("3_0gy1i")
+Name = "NorthWall"
+
+[sub_resource type="Resource" id="Resource_56tug"]
+script = ExtResource("3_0gy1i")
+Name = "SouthWall"
+
+[sub_resource type="Resource" id="Resource_x1cur"]
+script = ExtResource("3_0gy1i")
+Name = "WestWall"
+
+[sub_resource type="Resource" id="Resource_1xtc8"]
+script = ExtResource("3_0gy1i")
+Name = "EastWall"
+
+[node name="Level" type="Node3D"]
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_kem2q")
+
+[node name="DebugInfo" type="RichTextLabel" parent="HUDLayer"]
+offset_right = 1156.0
+offset_bottom = 649.0
+text = "SUP"
+scroll_active = false
+
+[node name="Inspect" type="Label" parent="HUDLayer"]
+offset_left = 798.0
+offset_top = 515.0
+offset_right = 1138.0
+offset_bottom = 633.0
+
+[node name="MainCamera" type="Camera3D" parent="." node_paths=PackedStringArray("target", "anchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.1887)
+current = true
+script = ExtResource("1_50q5v")
+target = NodePath("../Pal")
+anchor = NodePath("../Pal")
+tether_min = 2.0
+tether_max = 2.0
+tether_lerp = 3.0
+
+[node name="Pal" type="RigidBody3D" parent="." node_paths=PackedStringArray("Camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.965, 0)
+script = ExtResource("2_3bwr8")
+Camera = NodePath("../MainCamera")
+Subject = SubResource("Resource_gp3no")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pal"]
+shape = SubResource("SphereShape3D_gy7ai")
+
+[node name="CoreMesh" type="MeshInstance3D" parent="Pal"]
+mesh = SubResource("SphereMesh_ruixa")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_wqs0n")
+
+[node name="Skeleton3D" type="Skeleton3D" parent="Pal"]
+
+[node name="SpawnArea" type="Area3D" parent="."]
+script = ExtResource("5_vvc1a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnArea"]
+shape = SubResource("BoxShape3D_r1rkw")
+
+[node name="Floor2" type="RigidBody3D" parent="SpawnArea"]
+freeze = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnArea/Floor2"]
+mesh = SubResource("PlaneMesh_ubl3m")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_yfpe3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnArea/Floor2"]
+shape = SubResource("BoxShape3D_kxw6x")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.3, 0)
+
+[node name="LightmapProbe" type="LightmapProbe" parent="."]
+
+[node name="NorthWall" parent="." instance=ExtResource("7_5nv4i")]
+transform = Transform3D(20, 0, 0, 0, 4, 0, 0, 0, 1, 0, 2, 10)
+collision_layer = 3
+Subject = SubResource("Resource_735vj")
+
+[node name="SouthWall" parent="." instance=ExtResource("7_5nv4i")]
+transform = Transform3D(20, 0, 0, 0, 4, 0, 0, 0, 1, 0, 2, -10)
+collision_layer = 3
+Subject = SubResource("Resource_56tug")
+
+[node name="WestWall" parent="." instance=ExtResource("7_5nv4i")]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 20, -10, 2, 0)
+collision_layer = 3
+Subject = SubResource("Resource_x1cur")
+
+[node name="EastWall" parent="." instance=ExtResource("7_5nv4i")]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 20, 10, 2, 0)
+collision_layer = 3
+Subject = SubResource("Resource_1xtc8")

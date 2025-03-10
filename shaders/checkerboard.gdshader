@@ -6,13 +6,8 @@ bool trues_even(bvec3 val) {
 	return (int(val.x)+int(val.y)+int(val.z)) % 2 == 0;
 }
 
-bool xor(bool a, bool b) {
-	return (a||b) && !(a&&b);
-}
-
-
 void vertex() {
-	world_vertex = VERTEX.xyz;
+	world_vertex = (MODEL_MATRIX * vec4(VERTEX,1)).xyz;
 }
 
 void fragment() {

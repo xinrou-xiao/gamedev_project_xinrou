@@ -6,16 +6,23 @@ public partial class Pal : RigidThing
 {
 	
 	[Export]
-	public Node3D Camera { get; set; } = null;
+	public Camera3D Camera { get; set; } = null;
 	
 	Vector3 LastFacing = new Vector3(1,0,0);
 	double  AverageFacingAngularVelocity = 0.0;
+	
 	MeshInstance3D CoreMesh;
+	
+	RichTextLabel DebugInfo;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		CoreMesh = FindChild("CoreMesh") as MeshInstance3D;
+		DebugInfo = GetNode("/root/Level/HUDLayer/DebugInfo") as RichTextLabel;
+		Camera    = GetNode("/root/Level/MainCamera") as Camera3D;
+		Subject = new ThingSubject();
+		Subject.Name = "Pal";
 	}
 	
 	public Vector3 CalculateMovementForce(double delta)
@@ -48,13 +55,20 @@ public partial class Pal : RigidThing
 		return force.Normalized()*3.0f;
 	}
 	
+	public void UpdateDebugInfo()
+	{
+		DebugInfo.Text = Transform.Origin.ToString();
+	}
+	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		Vector3 movement_force = CalculateMovementForce(delta);
 		float scale = (float)delta;
 		ApplyCentralImpulse(movement_force*new Vector3(scale,scale,scale));
-		if (LinearVelocity.Length() > 0.01){
+		bool moving_substantially = (LinearVelocity.Length() > 0.001);
+		bool moving_exactly_up    = (Math.Abs(LinearVelocity.Normalized().Dot(new Vector3(0,1,0))) > 0.999);
+		if (moving_substantially && !moving_exactly_up){
 			Vector3 facing = LinearVelocity.Normalized();
 			ShaderMaterial shader = CoreMesh.GetActiveMaterial(0) as ShaderMaterial;
 			shader.SetShaderParameter("facing",(new Transform3D()).LookingAt(LinearVelocity));
@@ -65,6 +79,8 @@ public partial class Pal : RigidThing
 			shader.SetShaderParameter("facing_angular_velocity",AverageFacingAngularVelocity);
 			LastFacing = facing;
 		}
+		
+		UpdateDebugInfo();
 	}
 	
 }
