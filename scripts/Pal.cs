@@ -18,6 +18,8 @@ public partial class Pal : RigidThing
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		SetCollisionLayerValue(2,true);
+		SetCollisionMaskValue (2,true);
 		CoreMesh = FindChild("CoreMesh") as MeshInstance3D;
 		DebugInfo = GetNode("/root/Level/HUDLayer/DebugInfo") as RichTextLabel;
 		Camera    = GetNode("/root/Level/MainCamera") as Camera3D;

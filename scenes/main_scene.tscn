@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dm4tu84xol3yq"]
+[gd_scene load_steps=23 format=3 uid="uid://dm4tu84xol3yq"]
 
 [ext_resource type="Script" path="res://scripts/MainCamera.cs" id="1_50q5v"]
 [ext_resource type="Script" path="res://scripts/HudLayer.cs" id="1_kem2q"]
@@ -9,7 +9,12 @@
 [ext_resource type="Shader" path="res://shaders/checkerboard.gdshader" id="6_oswgg"]
 [ext_resource type="PackedScene" uid="uid://ctvy2lw5wkul5" path="res://scenes/rect_wall.tscn" id="7_5nv4i"]
 
-[sub_resource type="Resource" id="Resource_gp3no"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jv3pp"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_23f35"]
+
+[sub_resource type="Resource" id="Resource_1xp37"]
 script = ExtResource("3_0gy1i")
 Name = "Pal"
 
@@ -77,8 +82,26 @@ scroll_active = false
 [node name="Inspect" type="Label" parent="HUDLayer"]
 offset_left = 798.0
 offset_top = 515.0
-offset_right = 1138.0
-offset_bottom = 633.0
+offset_right = 915.0
+offset_bottom = 544.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="HUDLayer/Inspect"]
+material = SubResource("CanvasItemMaterial_jv3pp")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Reticle" type="Panel" parent="HUDLayer"]
+material = SubResource("CanvasItemMaterial_23f35")
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
 
 [node name="MainCamera" type="Camera3D" parent="." node_paths=PackedStringArray("target", "anchor")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.1887)
@@ -94,7 +117,7 @@ tether_lerp = 3.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.965, 0)
 script = ExtResource("2_3bwr8")
 Camera = NodePath("../MainCamera")
-Subject = SubResource("Resource_gp3no")
+Subject = SubResource("Resource_1xp37")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pal"]
 shape = SubResource("SphereShape3D_gy7ai")

@@ -7,20 +7,22 @@ public partial class HudLayer : CanvasLayer
 	
 	Camera3D Camera;
 	Label    Inspect;
+	Panel    Reticle;
 	
 	public override void _Ready()
 	{
+		Input.MouseMode = Input.MouseModeEnum.Hidden;
 		Camera = GetNode("/root/Level/MainCamera") as Camera3D;
-		Inspect = FindChild("Inspect") as Label;
+		Inspect = GetNode("./Inspect") as Label;
 		Inspect.Text = "!!!";
+		Reticle = GetNode("./Reticle") as Panel;
 	}
 
 	public override void _Process(double delta)
 	{
 	}
 	
-	public override void _PhysicsProcess(double delta)
-	{
+	IThing GetThingUnderMouse() {
 		PhysicsDirectSpaceState3D space_state = Camera.GetWorld3D().DirectSpaceState;
 		Vector2 mouse_position = GetViewport().GetMousePosition();
 		Vector3 origin = Camera.ProjectRayOrigin(mouse_position);
@@ -35,14 +37,26 @@ public partial class HudLayer : CanvasLayer
 		);
 		Godot.Collections.Dictionary result = space_state.IntersectRay(query);
 		if (!result.ContainsKey("collider")) {
-			Inspect.Text = "///";
+			return null;
+		} else {
+			return result["collider"].As<Node3D>() as IThing;
 		}
-		IThing thing = result["collider"].As<Node3D>() as IThing;
-		if(thing.Subject == null) {
+	}
+	
+	void UpdateMouseReadout (IThing thing) {
+		Vector2 mouse_position = GetViewport().GetMousePosition();
+		Vector2 viewport_size = GetViewport().GetVisibleRect().Size;
+		Reticle.Position = mouse_position;
+		Inspect.Position = mouse_position-(mouse_position/viewport_size)*Inspect.Size;
+		if ( (thing != null) && (thing.Subject != null) ) {
 			Inspect.Text = thing.Subject.Name;
 		} else {
 			Inspect.Text = "???";
 		}
-		
+	}
+	
+	public override void _PhysicsProcess(double delta)
+	{
+		UpdateMouseReadout(GetThingUnderMouse());
 	}
 }
