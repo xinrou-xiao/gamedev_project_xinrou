@@ -65,10 +65,9 @@ bool on_mouth_line() {
 }
 
 void fragment() {
-
-	RIM = 1.0;
 	CLEARCOAT = 0.2;
 	CLEARCOAT_ROUGHNESS = 1.0;
+	RIM = 1.0;
 	if (!on_eye_line()) {
 		ALBEDO = vec3(0.2,0.4,0.8);
 	} else {

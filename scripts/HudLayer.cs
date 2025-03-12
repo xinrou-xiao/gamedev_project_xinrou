@@ -1,20 +1,33 @@
 using Godot;
 using System;
 
+[GlobalClass]
 public partial class HudLayer : CanvasLayer
 {
+	
+	public class FocusPoint {
+		public IThing  Thing { get; set; }
+		public Vector3 Point { get; set; }
+		
+		public FocusPoint(IThing thing, Vector3 point) {
+			Thing = thing;
+			Point = point;
+		}
+	};
+	
 	public const float INSPECT_DISTANCE = 65536;
 	
-	Camera3D Camera;
-	Label    Inspect;
-	Panel    Reticle;
+	public FocusPoint Focus;
+	
+	Camera3D      Camera;
+	RichTextLabel Inspect;
+	Panel         Reticle;
 	
 	public override void _Ready()
 	{
 		Input.MouseMode = Input.MouseModeEnum.Hidden;
 		Camera = GetNode("/root/Level/MainCamera") as Camera3D;
-		Inspect = GetNode("./Inspect") as Label;
-		Inspect.Text = "!!!";
+		Inspect = GetNode("./Inspect") as RichTextLabel;
 		Reticle = GetNode("./Reticle") as Panel;
 	}
 
@@ -22,7 +35,7 @@ public partial class HudLayer : CanvasLayer
 	{
 	}
 	
-	IThing GetThingUnderMouse() {
+	void UpdateFocus() {
 		PhysicsDirectSpaceState3D space_state = Camera.GetWorld3D().DirectSpaceState;
 		Vector2 mouse_position = GetViewport().GetMousePosition();
 		Vector3 origin = Camera.ProjectRayOrigin(mouse_position);
@@ -37,26 +50,33 @@ public partial class HudLayer : CanvasLayer
 		);
 		Godot.Collections.Dictionary result = space_state.IntersectRay(query);
 		if (!result.ContainsKey("collider")) {
-			return null;
+			Focus = null;
 		} else {
-			return result["collider"].As<Node3D>() as IThing;
+			IThing  thing = result["collider"].As<Node3D>() as IThing;
+			Vector3 point = result["position"].As<Vector3>();
+			Focus  = new FocusPoint(thing,point);
 		}
 	}
 	
-	void UpdateMouseReadout (IThing thing) {
+	void SetInspectText(String text) {
+		Inspect.Text = "[center]"+text+"[/center]";
+	}
+	
+	void UpdateMouseReadout () {
 		Vector2 mouse_position = GetViewport().GetMousePosition();
 		Vector2 viewport_size = GetViewport().GetVisibleRect().Size;
 		Reticle.Position = mouse_position;
 		Inspect.Position = mouse_position-(mouse_position/viewport_size)*Inspect.Size;
-		if ( (thing != null) && (thing.Subject != null) ) {
-			Inspect.Text = thing.Subject.Name;
+		if ( (Focus != null) && (Focus.Thing != null )&& (Focus.Thing.Subject != null) ) {
+			SetInspectText(Focus.Thing.Subject.Name);
 		} else {
-			Inspect.Text = "???";
+			SetInspectText("???");
 		}
 	}
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		UpdateMouseReadout(GetThingUnderMouse());
+		UpdateFocus();
+		UpdateMouseReadout();
 	}
 }
