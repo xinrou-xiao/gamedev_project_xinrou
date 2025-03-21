@@ -1,4 +1,6 @@
 
+#ifndef UTIL_RANDOM
+#define UTIL_RANDOM
 
 // Cheap, but cryptographically unsecure RNG
 // Multiplier constant from: https://www.ams.org/journals/mcom/1999-68-225/S0025-5718-99-00996-5/S0025-5718-99-00996-5.pdf
@@ -107,4 +109,5 @@ vec4 random_vec4(uint seed_state) {
 	);
 }
 
+#endif // UTIL_RANDOM
 
