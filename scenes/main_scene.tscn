@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dm4tu84xol3yq"]
+[gd_scene load_steps=14 format=3 uid="uid://dm4tu84xol3yq"]
 
 [ext_resource type="Script" uid="uid://cv46lpbli0q63" path="res://scripts/MainCamera.cs" id="1_50q5v"]
 [ext_resource type="Script" uid="uid://cygfpobe2n0x6" path="res://scripts/HudLayer.cs" id="1_kem2q"]
@@ -7,8 +7,6 @@
 [ext_resource type="Shader" uid="uid://cdpejhgwqk2pt" path="res://shaders/checkerboard.gdshader" id="6_oswgg"]
 [ext_resource type="PackedScene" uid="uid://ctvy2lw5wkul5" path="res://scenes/rect_wall.tscn" id="7_5nv4i"]
 [ext_resource type="Script" uid="uid://di4gxbhc1f1tm" path="res://scripts/thing_bases/RigidThing.cs" id="7_pg1sk"]
-[ext_resource type="PackedScene" uid="uid://bktb60tdaai30" path="res://scenes/walker.tscn" id="9_1xl00"]
-[ext_resource type="Shader" uid="uid://bjhns5rl5lafk" path="res://shaders/concrete.gdshader" id="9_7yjl6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jv3pp"]
 blend_mode = 1
@@ -26,10 +24,6 @@ shader = ExtResource("6_oswgg")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kxw6x"]
 size = Vector3(20, 0.01, 20)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xo8kx"]
-render_priority = 0
-shader = ExtResource("9_7yjl6")
 
 [node name="Level" type="Node3D"]
 
@@ -114,15 +108,3 @@ collision_layer = 3
 [node name="EastWall" parent="." instance=ExtResource("7_5nv4i")]
 transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 20, 10, 2, 0)
 collision_layer = 3
-
-[node name="Pillar" parent="." instance=ExtResource("7_5nv4i")]
-transform = Transform3D(2, 0, 0, 0, 5, 0, 0, 0, 2, 0, 2.5, 0)
-collision_layer = 3
-
-[node name="MeshInstance3D" parent="Pillar" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_xo8kx")
-
-[node name="Walker" parent="." instance=ExtResource("9_1xl00")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.12459, 1, 0)
-
-[editable path="Pillar"]

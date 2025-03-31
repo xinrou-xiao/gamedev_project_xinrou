@@ -63,9 +63,9 @@ public partial class Pal : RigidThing
 	
 	public void UpdateDebugInfo()
 	{
-		DebugInfo.Text = Transform.Origin.ToString();
+		DebugInfo.Text = "Player at: " + Transform.Origin.ToString();
 		if ( HUD.Focus != null ) {
-			DebugInfo.Text += HUD.Focus.Point.ToString();
+			DebugInfo.Text += "\nFocus at: " + HUD.Focus.Point.ToString();
 		}
 	}
 	
