@@ -1,14 +1,14 @@
 [gd_scene load_steps=17 format=3 uid="uid://dm4tu84xol3yq"]
 
-[ext_resource type="Script" path="res://scripts/MainCamera.cs" id="1_50q5v"]
-[ext_resource type="Script" path="res://scripts/HudLayer.cs" id="1_kem2q"]
+[ext_resource type="Script" uid="uid://cv46lpbli0q63" path="res://scripts/MainCamera.cs" id="1_50q5v"]
+[ext_resource type="Script" uid="uid://cygfpobe2n0x6" path="res://scripts/HudLayer.cs" id="1_kem2q"]
 [ext_resource type="PackedScene" uid="uid://cv8jq1i3wnpej" path="res://scenes/player_core.tscn" id="3_wcibb"]
-[ext_resource type="Script" path="res://scripts/Zone.cs" id="5_vvc1a"]
-[ext_resource type="Shader" path="res://shaders/checkerboard.gdshader" id="6_oswgg"]
+[ext_resource type="Script" uid="uid://hstx6vsh6m2q" path="res://scripts/Zone.cs" id="5_vvc1a"]
+[ext_resource type="Shader" uid="uid://cdpejhgwqk2pt" path="res://shaders/checkerboard.gdshader" id="6_oswgg"]
 [ext_resource type="PackedScene" uid="uid://ctvy2lw5wkul5" path="res://scenes/rect_wall.tscn" id="7_5nv4i"]
-[ext_resource type="Script" path="res://scripts/thing_bases/RigidThing.cs" id="7_pg1sk"]
+[ext_resource type="Script" uid="uid://di4gxbhc1f1tm" path="res://scripts/thing_bases/RigidThing.cs" id="7_pg1sk"]
 [ext_resource type="PackedScene" uid="uid://bktb60tdaai30" path="res://scenes/walker.tscn" id="9_1xl00"]
-[ext_resource type="Shader" path="res://shaders/concrete.gdshader" id="9_7yjl6"]
+[ext_resource type="Shader" uid="uid://bjhns5rl5lafk" path="res://shaders/concrete.gdshader" id="9_7yjl6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jv3pp"]
 blend_mode = 1

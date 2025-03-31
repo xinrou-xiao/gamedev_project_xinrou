@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bktb60tdaai30"]
 
-[ext_resource type="Shader" path="res://shaders/light_grid.gdshader" id="1_u5yae"]
+[ext_resource type="Shader" uid="uid://u0mac202a35i" path="res://shaders/light_grid.gdshader" id="1_u5yae"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7q8j2"]
 

@@ -110,4 +110,3 @@ vec4 random_vec4(uint seed_state) {
 }
 
 #endif // UTIL_RANDOM
-

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://q07p6l5i2rk5"]
 
-[ext_resource type="Shader" path="res://shaders/demos/circle/circle_step_by_step.gdshader" id="1_pmm4o"]
+[ext_resource type="Shader" uid="uid://ctqcqnjbbv77h" path="res://shaders/demos/circle/circle_step_by_step.gdshader" id="1_pmm4o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_33k1p"]
 render_priority = 0

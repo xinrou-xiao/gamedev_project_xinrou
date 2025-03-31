@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cv8jq1i3wnpej"]
 
-[ext_resource type="Script" path="res://scripts/Pal.cs" id="1_sg5xd"]
-[ext_resource type="Shader" path="res://shaders/core.gdshader" id="2_4klyh"]
+[ext_resource type="Script" uid="uid://cf1ncp7jbhsk5" path="res://scripts/Pal.cs" id="1_sg5xd"]
+[ext_resource type="Shader" uid="uid://dkuh60tfrawsj" path="res://shaders/core.gdshader" id="2_4klyh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gy7ai"]
 
@@ -21,7 +21,7 @@ shader_parameter/eye_fuzz = 0.1
 shader_parameter/mouth_rise_angle = -0.1
 shader_parameter/mouth_width_angle = 0.5
 shader_parameter/mouth_line_width_angle = 0.01
-shader_parameter/facing = null
+shader_parameter/facing = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/facing_angular_velocity = 0.0
 shader_parameter/turn_fuzz = 0.1
 

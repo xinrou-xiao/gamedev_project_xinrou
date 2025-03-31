@@ -15,4 +15,3 @@ void fragment() {
 	//ALBEDO = vec3(float(val)/float(0xFFFFFFFFu),0,0);
 	ALBEDO = random_vec3(seed);
 }
-

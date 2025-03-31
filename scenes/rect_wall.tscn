@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ctvy2lw5wkul5"]
 
-[ext_resource type="Script" path="res://scripts/RectWall.cs" id="1_kpj6v"]
-[ext_resource type="Shader" path="res://shaders/checkerboard.gdshader" id="2_7rf3p"]
+[ext_resource type="Script" uid="uid://c6xh7ptqdy483" path="res://scripts/RectWall.cs" id="1_kpj6v"]
+[ext_resource type="Shader" uid="uid://cdpejhgwqk2pt" path="res://shaders/checkerboard.gdshader" id="2_7rf3p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ni5y8"]
 

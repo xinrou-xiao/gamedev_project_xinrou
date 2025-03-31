@@ -2,6 +2,8 @@
 #ifndef UTIL_SIMPLE_TEXT
 #define UTIL_SIMPLE_TEXT
 
+#include "grid.gdshaderinc"
+
 const uint TEXT_8x16_ARRAY[] = {
 // ' '
 0x00000000u,0x00000000u,0x00000000u,0x00000000u,
@@ -199,10 +201,33 @@ bool text_16x16_sample(uint codepoint,vec2 inner_coordinate) {
 	if ( (codepoint < 32u) || (codepoint >= 128u) ) {
 		return false;
 	}
+	codepoint -= 32u;
 	uvec2 inner_tile_position = uvec2(inner_coordinate * vec2(8,16));
 	uint int_index = codepoint*4u+inner_tile_position.y/4u;
 	uint bit_index = (3u-(inner_tile_position.y % 4u)) * 8u + 8u-inner_tile_position.x;
 	return ((TEXT_8x16_ARRAY[int_index] >> bit_index) & 1u) != 0u;
+}
+
+bool float_readout(float value, vec2 inner_coordinate, uint leading, uint trailing) {
+	uint total_tiles = leading + 1u + trailing;
+	float hrz_scaling = 1.0 / float(total_tiles);
+	int tile = int(inner_coordinate.x * float(total_tiles));
+	if ((tile < 0) || (tile>=int(total_tiles))) {
+		return false;
+	}
+	uint codepoint = 32u;
+	if (tile != int(leading)) {
+		int  digit_position = int(leading)-tile;
+		if (tile > int(leading)) {
+			digit_position ++;
+		}
+		float pow10_shift = pow(10.0,float(1-digit_position));
+		uint digit = uint(abs(int(value * pow10_shift))%10);
+		codepoint = uint(48 + digit_position);
+	} else {
+		codepoint = 46u;
+	}
+	return text_16x16_sample(codepoint,inner_coord_2d(inner_coordinate,vec2(hrz_scaling,1.)));
 }
 
 
