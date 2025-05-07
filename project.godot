@@ -25,6 +25,8 @@ TextrueCache="*res://scirpts/textrue_cache.gd"
 
 window/size/viewport_width=1024
 window/size/viewport_height=432
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 
 [dotnet]
 
