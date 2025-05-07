@@ -1,0 +1,114 @@
+[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://dvcqmol63ccqk"]
+
+[ext_resource type="Texture2D" uid="uid://bmohk1bac4u8y" path="res://assets/player/jump/jump.png" id="1_q4che"]
+[ext_resource type="Texture2D" uid="uid://bs5igbm3w5t5e" path="res://assets/player/crouch/couch0.png" id="2_qgti6"]
+[ext_resource type="Texture2D" uid="uid://df5oi6a68rx1a" path="res://assets/player/crouch/couch1.png" id="3_ggiba"]
+[ext_resource type="Texture2D" uid="uid://kg31qpmkv77s" path="res://assets/player/crouch_idle/couch_idle0.png" id="4_mftj1"]
+[ext_resource type="Texture2D" uid="uid://cplhsiuohuv27" path="res://assets/player/grab/theft-12.png.png" id="4_rsbu5"]
+[ext_resource type="Texture2D" uid="uid://bdufly71127l6" path="res://assets/player/leave/leave0.png.png" id="5_rsbu5"]
+[ext_resource type="Texture2D" uid="uid://dwtqaoywsd7q7" path="res://assets/player/crouch_idle/crouch_idle1.png" id="5_v8gkk"]
+[ext_resource type="Texture2D" uid="uid://bipm0egi27lcu" path="res://assets/player/grab/theft-13.png.png" id="5_xs8k6"]
+[ext_resource type="Texture2D" uid="uid://rjq0ootmxxw8" path="res://assets/player/grab/theft-14.png.png" id="6_mftj1"]
+[ext_resource type="Texture2D" uid="uid://chv6o3ql4lg0u" path="res://assets/player/leave/leave1.png" id="6_xs8k6"]
+[ext_resource type="Texture2D" uid="uid://dixbbkvsbq4qy" path="res://assets/player/leave/leave2.png" id="7_mftj1"]
+[ext_resource type="Texture2D" uid="uid://dmka5w288r8dq" path="res://assets/player/idle/idle0.png" id="7_rsbu5"]
+[ext_resource type="Texture2D" uid="uid://va41ay6g2uwm" path="res://assets/player/idle/idle1.png" id="8_rsbu5"]
+[ext_resource type="Texture2D" uid="uid://d25gbkkm3cwf2" path="res://assets/player/walk/walk0.png" id="8_v8gkk"]
+[ext_resource type="Texture2D" uid="uid://bootnaaykpmkq" path="res://assets/player/walk/walk1.png" id="9_sl533"]
+[ext_resource type="Texture2D" uid="uid://cwwshv5glc0oa" path="res://assets/player/walk/walk2.png" id="10_5yiek"]
+[ext_resource type="Texture2D" uid="uid://jlp4457xfo3x" path="res://assets/player/walk/walk3.png" id="11_r6erb"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q4che")
+}],
+"loop": true,
+"name": &"air",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qgti6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ggiba")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("4_mftj1")
+}, {
+"duration": 3.0,
+"texture": ExtResource("5_v8gkk")
+}],
+"loop": true,
+"name": &"crouch_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rsbu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xs8k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mftj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xs8k6")
+}],
+"loop": false,
+"name": &"grab",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("7_rsbu5")
+}, {
+"duration": 3.0,
+"texture": ExtResource("8_rsbu5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_rsbu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xs8k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mftj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xs8k6")
+}],
+"loop": true,
+"name": &"leave",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_v8gkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sl533")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5yiek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r6erb")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]

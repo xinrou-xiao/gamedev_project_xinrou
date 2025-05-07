@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bij3wvljbins8"]
+
+[ext_resource type="Script" uid="uid://bsakmxtgos0ed" path="res://scirpts/money_stack.gd" id="1_cik1j"]
+[ext_resource type="Shader" uid="uid://dp1h2do6j1qdj" path="res://shaders/money_stack.gdshader" id="2_28jyf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cik1j"]
+size = Vector2(52, 18)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eup1q"]
+shader = ExtResource("2_28jyf")
+shader_parameter/time_speed = 2.0
+shader_parameter/min_brightness = 0.5
+shader_parameter/max_brightness = 1.5
+
+[node name="Node2D" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_cik1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cik1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_eup1q")
+position = Vector2(6, -23)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

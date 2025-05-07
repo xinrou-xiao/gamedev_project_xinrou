@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://12htgyayucxj"]
+
+[ext_resource type="Script" uid="uid://bx0w0kj6sq4k7" path="res://scirpts/door.gd" id="1_xdr17"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xdr17"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdr17"]
+size = Vector2(26, 310)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0dfd"]
+size = Vector2(67, 310)
+
+[node name="Door" type="Node2D"]
+script = ExtResource("1_xdr17")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(169, -36)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+collision_layer = 16
+physics_material_override = SubResource("PhysicsMaterial_xdr17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+visible = false
+position = Vector2(-169, 54)
+shape = SubResource("RectangleShape2D_xdr17")
+
+[node name="Node2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
+position = Vector2(0.5, 18)
+shape = SubResource("RectangleShape2D_d0dfd")
+
+[connection signal="body_entered" from="Node2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Node2D" to="." method="_on_body_exited"]

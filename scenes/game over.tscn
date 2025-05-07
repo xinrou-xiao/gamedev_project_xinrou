@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgylq8p47yyjh"]
+
+[ext_resource type="Script" uid="uid://cwitkr1nvnyjd" path="res://scirpts/game_over.gd" id="1_bqwa5"]
+[ext_resource type="FontFile" uid="uid://1h5vd3h4d4xg" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="1_c3dyk"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bqwa5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1027.0
+offset_bottom = 439.0
+color = Color(0.0430392, 0.0430392, 0.0430392, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 138.0
+offset_right = 831.0
+offset_bottom = 284.0
+theme_override_fonts/font = ExtResource("1_c3dyk")
+theme_override_font_sizes/font_size = 121
+text = "Game Over"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 356.0
+offset_right = 603.0
+offset_bottom = 396.0
+theme_override_colors/font_hover_color = Color(0.299141, 0.537726, 0.271197, 1)
+theme_override_fonts/font = ExtResource("1_c3dyk")
+theme_override_font_sizes/font_size = 26
+text = "Back to menu"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

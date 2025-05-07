@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh8ovfrb0nd26"]
+
+[ext_resource type="FontFile" uid="uid://1h5vd3h4d4xg" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="1_hqv6c"]
+[ext_resource type="Script" uid="uid://cv7nak4c74nf" path="res://scirpts/won.gd" id="1_w8kld"]
+[ext_resource type="Shader" uid="uid://b8bvh1gsvjhvh" path="res://shaders/won.gdshader" id="2_7ifpe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jc46y"]
+shader = ExtResource("2_7ifpe")
+shader_parameter/speed = 1.0
+shader_parameter/density = 50.0
+shader_parameter/brightness = 1.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w8kld")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_jc46y")
+layout_mode = 0
+offset_right = 1025.0
+offset_bottom = 432.0
+color = Color(0.11378, 0.18699, 0.119425, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 73.0
+offset_right = 804.0
+offset_bottom = 261.0
+theme_override_fonts/font = ExtResource("1_hqv6c")
+theme_override_font_sizes/font_size = 156
+text = "You won"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 350.0
+offset_right = 607.0
+offset_bottom = 395.0
+theme_override_fonts/font = ExtResource("1_hqv6c")
+theme_override_font_sizes/font_size = 30
+text = "Back to menu"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

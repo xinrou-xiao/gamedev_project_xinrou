@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://mu50rnecafq7"]
+
+[ext_resource type="Script" uid="uid://bjuva7l14y5ml" path="res://scenes/main.gd" id="1_1j6d1"]
+[ext_resource type="PackedScene" uid="uid://bsrphuurxcwjy" path="res://scenes/Theft.tscn" id="2_mqxhw"]
+[ext_resource type="Script" uid="uid://b3liuoddvd5ve" path="res://scenes/hud.gd" id="3_3dblt"]
+[ext_resource type="FontFile" uid="uid://1h5vd3h4d4xg" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="4_blwv4"]
+[ext_resource type="PackedScene" uid="uid://ntfugx7a0r0e" path="res://scenes/floors/level1.tscn" id="5_nfa5d"]
+[ext_resource type="Script" uid="uid://pwleigi8p2n4" path="res://elavator.gd" id="6_3dblt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blwv4"]
+size = Vector2(282, 336)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_1j6d1")
+
+[node name="Floors" type="Node2D" parent="."]
+
+[node name="Floor1" parent="Floors" instance=ExtResource("5_nfa5d")]
+
+[node name="Elavator" type="Area2D" parent="."]
+position = Vector2(116, 421)
+script = ExtResource("6_3dblt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elavator"]
+position = Vector2(3990, -149)
+shape = SubResource("RectangleShape2D_blwv4")
+
+[node name="Theft" parent="." instance=ExtResource("2_mqxhw")]
+position = Vector2(3854, 305)
+
+[node name="Camera2D" type="Camera2D" parent="Theft"]
+position = Vector2(-43, 118)
+limit_left = 0
+limit_top = 0
+limit_right = 4320
+limit_bottom = 440
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("3_3dblt")
+
+[node name="Panel" type="Panel" parent="HUD"]
+offset_left = 11.0
+offset_top = 14.0
+offset_right = 139.0
+offset_bottom = 67.0
+
+[node name="dollor_sign" type="Label" parent="HUD"]
+offset_left = 15.0
+offset_top = 22.0
+offset_right = 55.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("4_blwv4")
+theme_override_font_sizes/font_size = 30
+text = "$"
+
+[node name="money" type="Label" parent="HUD"]
+offset_left = 35.0
+offset_top = 22.0
+offset_right = 53.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("4_blwv4")
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="hint" type="Label" parent="HUD"]
+offset_left = 458.0
+offset_top = 352.0
+offset_right = 546.0
+offset_bottom = 432.0
+theme_override_fonts/font = ExtResource("4_blwv4")
+theme_override_font_sizes/font_size = 66
+text = "[E]"
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(-1, 0)
+color = Color(0, 0, 0, 1)
+energy = 0.97
+blend_mode = 2
+
+[connection signal="money_collected" from="Floors/Floor1" to="HUD" method="_on_money_collected"]
+[connection signal="body_entered" from="Elavator" to="Elavator" method="_on_body_entered"]
+[connection signal="body_exited" from="Elavator" to="Elavator" method="_on_body_exited"]
+[connection signal="go_up" from="Elavator" to="." method="_on_elavator_go_up"]
