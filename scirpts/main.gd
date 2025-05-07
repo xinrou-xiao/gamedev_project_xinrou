@@ -5,6 +5,7 @@ var current_floor: int = 1
 @onready var NPC = $Floors/Floor1/NPCs/NPC
 @onready var red_overlay = $Warning/RedOverlay
 @onready var red_material = red_overlay.material
+@onready var transition = $CanvasLayer/ColorRect
 
 func  _physics_process(delta: float) -> void:
 	if NPC.current_state == NPC.States.CHASE:
@@ -13,9 +14,11 @@ func  _physics_process(delta: float) -> void:
 func load_scene():
 	var floor_scene = Floor_manager.get_floor(current_floor + 1)
 	if floor_scene != null:
+		transition.play()
 		floors.add_child(floor_scene)
 		Floor_manager.clear_floor(current_floor)
 		current_floor = current_floor + 1
+		await transition.transition_finished
 	else:
 		get_tree().change_scene_to_file("res://scenes/won.tscn")
 	
