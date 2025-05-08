@@ -87,9 +87,10 @@ theme_override_font_sizes/font_size = 66
 text = "[E]"
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
 position = Vector2(-1, 0)
 color = Color(0, 0, 0, 1)
-energy = 0.97
+energy = 0.9
 blend_mode = 2
 
 [node name="Warning" type="CanvasLayer" parent="."]
