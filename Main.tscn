@@ -2,10 +2,10 @@
 
 [ext_resource type="TileSet" uid="uid://dr7w78ecq2lua" path="res://assets/frames/walls.tres" id="1_r0du0"]
 [ext_resource type="TileSet" uid="uid://46fwe7pv3qyo" path="res://assets/frames/furnitures.tres" id="2_cm0pq"]
-[ext_resource type="PackedScene" uid="uid://bsrphuurxcwjy" path="res://scenes/Theft.tscn" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://bsrphuurxcwjy" path="res://scenes/theft.tscn" id="2_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://bij3wvljbins8" path="res://scenes/money_stack.tscn" id="4_cm0pq"]
-[ext_resource type="Script" uid="uid://pwleigi8p2n4" path="res://elavator.gd" id="4_fos0i"]
-[ext_resource type="Script" uid="uid://dhbxw6o0w67q3" path="res://hud.gd" id="6_trn2v"]
+[ext_resource type="Script" uid="uid://pwleigi8p2n4" path="res://scirpts/elavator.gd" id="4_fos0i"]
+[ext_resource type="Script" path="res://hud.gd" id="6_trn2v"]
 [ext_resource type="PackedScene" uid="uid://col8dfkjhu5gn" path="res://scenes/npc.tscn" id="9_03owx"]
 [ext_resource type="FontFile" uid="uid://1h5vd3h4d4xg" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="9_wkp8b"]
 [ext_resource type="PackedScene" uid="uid://12htgyayucxj" path="res://scenes/door.tscn" id="10_wkp8b"]

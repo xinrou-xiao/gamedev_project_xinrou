@@ -1,9 +1,9 @@
 extends CanvasLayer
 
 var money_count = 0
-@onready var money_label = $money
+@onready var money_label = $Money
 @onready var theft = $"../Theft"
-@onready var hint = $hint
+@onready var hint = $Hint
 
 func _on_money_collected() -> void:
 	money_count = money_count + 10

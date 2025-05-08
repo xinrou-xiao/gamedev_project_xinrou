@@ -1,8 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://depdblf4fxkcp"]
 
-[ext_resource type="Script" uid="uid://nq4yic8nx8nj" path="res://control.gd" id="1_vjb58"]
 [ext_resource type="FontFile" uid="uid://1h5vd3h4d4xg" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="2_con2f"]
 [ext_resource type="Shader" uid="uid://b0l7cnyivbbn5" path="res://shaders/menu.gdshader" id="2_mhnvy"]
+
+[sub_resource type="GDScript" id="GDScript_vjb58"]
+script/source = "extends Control
+
+signal press_start
+
+func _on_start_pressed() -> void:
+	var main = load(\"res://scenes/main.tscn\")
+	get_tree().change_scene_to_packed(main)
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_con2f"]
 shader = ExtResource("2_mhnvy")
@@ -18,9 +27,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_vjb58")
+script = SubResource("GDScript_vjb58")
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 1.0
@@ -28,7 +37,7 @@ offset_right = 1031.0
 offset_bottom = 437.0
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 material = SubResource("ShaderMaterial_con2f")
 layout_mode = 0
 offset_left = 165.0
@@ -39,7 +48,7 @@ theme_override_fonts/font = ExtResource("2_con2f")
 theme_override_font_sizes/font_size = 146
 text = "The Theft"
 
-[node name="Button" type="Button" parent="."]
+[node name="Start" type="Button" parent="."]
 layout_mode = 0
 offset_left = 447.0
 offset_top = 352.0
@@ -52,4 +61,4 @@ theme_override_font_sizes/font_size = 40
 text = "start"
 flat = true
 
-[connection signal="pressed" from="Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

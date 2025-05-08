@@ -7,21 +7,20 @@ const JUMPFORCE = -1000
 
 @onready var e_prompt = $CanvasModulate/hint
 @onready var theft = $Sprite2D
-@onready var flash_light = $PointLight2D
+@onready var flash_light = $Flashlight
 
 var in_standing = true
 var money = 0
 var skip_physics_process = false
 var movement_strategy: MovementStrategy = null
 
-
 func _ready() -> void:
 	add_to_group("player")
-	
 
 func _physics_process(delta):
 	if skip_physics_process:
 		return
+		
 	if Input.is_action_pressed("crouch"):
 		movement_strategy = CrouchStrategy.new()
 	elif !is_on_floor():

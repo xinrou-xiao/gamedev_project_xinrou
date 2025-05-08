@@ -11,9 +11,7 @@ void fragment() {
     
     float shine_pos = mod(TIME * shine_speed, 1.0 + shine_width) - shine_width;
     float shine = smoothstep(shine_pos, shine_pos + shine_width, UV.x);
-    
     float edge = smoothstep(0.0, edge_glow, UV.x) * smoothstep(1.0, 1.0 - edge_glow, UV.x);
-    
     float highlight = (shine * shine_intensity) + (edge * 0.5);
     
     COLOR = tex_color;

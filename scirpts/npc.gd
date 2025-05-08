@@ -26,7 +26,6 @@ func _physics_process(delta: float) -> void:
 	change_direction()
 	look_for_player()
 	
-
 func look_for_player():
 	if ray_cast.is_colliding():
 		if ray_cast.get_collider() is CharacterBody2D:

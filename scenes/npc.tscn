@@ -25,7 +25,7 @@ collision_layer = 32
 collision_mask = 19
 script = ExtResource("1_uqy63")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PhysicBody" type="CollisionShape2D" parent="."]
 position = Vector2(-12.5, -2)
 shape = SubResource("RectangleShape2D_uqy63")
 
@@ -37,8 +37,6 @@ animation = &"idle"
 [node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
 position = Vector2(-6, -76)
 target_position = Vector2(279, 0)
-
-[node name="Timer" type="Timer" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
 

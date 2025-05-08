@@ -3,9 +3,9 @@
 [ext_resource type="FontFile" uid="uid://1h5vd3h4d4xg" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="1_hqv6c"]
 [ext_resource type="Script" uid="uid://cv7nak4c74nf" path="res://scirpts/won.gd" id="1_w8kld"]
 [ext_resource type="Shader" uid="uid://b8bvh1gsvjhvh" path="res://shaders/won.gdshader" id="2_7ifpe"]
-[ext_resource type="Shader" uid="uid://dtj6t7tnkov62" path="res://scenes/won_background.gdshader" id="2_jc46y"]
+[ext_resource type="Shader" uid="uid://dtj6t7tnkov62" path="res://shaders/won_background.gdshader" id="2_jc46y"]
 [ext_resource type="Texture2D" uid="uid://de3nowlhwa7nr" path="res://assets/target/sprite_0.png" id="5_kg3bq"]
-[ext_resource type="Shader" uid="uid://bjs1pxtuk2xio" path="res://scenes/spread_moeny.gdshader" id="5_u5o4t"]
+[ext_resource type="Shader" uid="uid://bjs1pxtuk2xio" path="res://shaders/spread_moeny.gdshader" id="5_u5o4t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kg3bq"]
 shader = ExtResource("2_jc46y")

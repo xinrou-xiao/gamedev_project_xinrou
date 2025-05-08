@@ -15,11 +15,11 @@ shader_parameter/shine_intensity = 2.0
 shader_parameter/edge_glow = 0.5
 shader_parameter/shine_color = Color(1, 1, 1, 0.176471)
 
-[node name="Node2D" type="Area2D"]
+[node name="MoneyStack" type="Area2D"]
 collision_layer = 8
 script = ExtResource("1_cik1j")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cik1j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

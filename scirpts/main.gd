@@ -5,7 +5,7 @@ var current_floor: int = 1
 @onready var NPC = $Floors/Floor1/NPCs/NPC
 @onready var red_overlay = $Warning/RedOverlay
 @onready var red_material = red_overlay.material
-@onready var transition = $CanvasLayer/ColorRect
+@onready var transition = $Transition/ChangeScene
 
 func  _physics_process(delta: float) -> void:
 	if NPC.current_state == NPC.States.CHASE:
