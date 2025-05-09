@@ -21,10 +21,10 @@ func _physics_process(delta):
 	if skip_physics_process:
 		return
 		
-	if Input.is_action_pressed("crouch"):
+	if !is_on_floor():
+		movement_strategy = AirborneStrategy.new()	
+	elif Input.is_actison_pressed("crouch"):
 		movement_strategy = CrouchStrategy.new()
-	elif !is_on_floor():
-		movement_strategy = AirborneStrategy.new()
 	else:
 		movement_strategy = WalkStrategy.new()
 	
