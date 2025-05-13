@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddadmmlbkhoo7"]
+
+[ext_resource type="Texture2D" uid="uid://b15ta6eckd38h" path="res://assets/furnitures/sprite_03.png" id="1_l4o33"]
+[ext_resource type="Script" uid="uid://rsbvyg3xd5b5" path="res://closet.gd" id="1_uj11n"]
+[ext_resource type="Texture2D" uid="uid://bmiwu3032igji" path="res://assets/furnitures/sprite_04.png" id="2_uj11n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71km3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l4o33")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uj11n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_l4o33")
+}],
+"loop": false,
+"name": &"hide",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgwhh"]
+size = Vector2(237, 324)
+
+[node name="Closet" type="Node2D"]
+script = ExtResource("1_uj11n")
+
+[node name="Closet" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_71km3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-30.5, 54)
+shape = SubResource("RectangleShape2D_cgwhh")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

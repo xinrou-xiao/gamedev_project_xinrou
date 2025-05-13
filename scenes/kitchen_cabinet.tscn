@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bg3v3di7ta1qq"]
+
+[ext_resource type="Script" uid="uid://buxqyqcv844gi" path="res://scirpts/kitchen_cabinet.gd" id="1_tlhxf"]
+[ext_resource type="Texture2D" uid="uid://dxr3hgm7wolgx" path="res://assets/furnitures/sprite_16.png" id="2_s408r"]
+[ext_resource type="Texture2D" uid="uid://bob24f2t5pknb" path="res://assets/furnitures/sprite_17.png" id="3_qma4h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ydje7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s408r")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qma4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s408r")
+}],
+"loop": false,
+"name": &"hide",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2i7q"]
+size = Vector2(189, 432)
+
+[node name="Kitchen_Cabinet" type="Node2D"]
+script = ExtResource("1_tlhxf")
+
+[node name="Cabinet" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ydje7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-13.5, 0)
+shape = SubResource("RectangleShape2D_y2i7q")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

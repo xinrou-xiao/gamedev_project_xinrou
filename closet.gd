@@ -1,6 +1,7 @@
-extends Area2D
+extends HidableFurnitures
 
-signal go_up
+func _ready() -> void:
+	furniture = $Closet
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -9,7 +10,3 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		InteractableFacade.clear_target(self)
-
-func interact(body: Node2D):
-		get_tree().change_scene_to_file("res://sences/won.tscn")
-		emit_signal("go_up")

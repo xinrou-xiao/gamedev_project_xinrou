@@ -39,7 +39,7 @@ position = Vector2(3990, -149)
 shape = SubResource("RectangleShape2D_blwv4")
 
 [node name="Theft" parent="." instance=ExtResource("2_mqxhw")]
-position = Vector2(3854, 305)
+position = Vector2(1257, 253)
 
 [node name="Camera2D" type="Camera2D" parent="Theft"]
 position = Vector2(-43, 118)
@@ -87,6 +87,7 @@ theme_override_font_sizes/font_size = 66
 text = "[E]"
 
 [node name="DarkLight" type="DirectionalLight2D" parent="."]
+visible = false
 position = Vector2(-1, 0)
 color = Color(0, 0, 0, 1)
 energy = 0.9

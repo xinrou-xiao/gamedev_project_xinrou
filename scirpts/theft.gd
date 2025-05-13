@@ -18,12 +18,12 @@ func _ready() -> void:
 	add_to_group("player")
 
 func _physics_process(delta):
-	if skip_physics_process:
+	if not self.visible or skip_physics_process:
 		return
 		
 	if !is_on_floor():
 		movement_strategy = AirborneStrategy.new()	
-	elif Input.is_actison_pressed("crouch"):
+	elif Input.is_action_pressed("crouch"):
 		movement_strategy = CrouchStrategy.new()
 	else:
 		movement_strategy = WalkStrategy.new()

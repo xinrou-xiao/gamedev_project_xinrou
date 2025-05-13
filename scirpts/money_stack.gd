@@ -15,7 +15,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		InteractableFacade.clear_target()
+		InteractableFacade.clear_target(self)
 		
 func interact(body: Node2D):
 	queue_free()

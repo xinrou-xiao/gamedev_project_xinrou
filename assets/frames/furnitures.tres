@@ -1,34 +1,29 @@
-[gd_resource type="TileSet" load_steps=53 format=3 uid="uid://46fwe7pv3qyo"]
+[gd_resource type="TileSet" load_steps=49 format=3 uid="uid://46fwe7pv3qyo"]
 
-[ext_resource type="Texture2D" uid="uid://dcarsi7hdbhch" path="res://assets/furnitures/furnitures/furnitures-5.png" id="1_exnci"]
-[ext_resource type="Texture2D" uid="uid://cd4t4l4n5m8ru" path="res://assets/furnitures/furnitures/sprite_00.png" id="1_fsdcx"]
-[ext_resource type="Texture2D" uid="uid://caj0wornvsms7" path="res://assets/furnitures/furnitures/sprite_01.png" id="2_8n4y7"]
-[ext_resource type="Texture2D" uid="uid://bqoi4tamdqci3" path="res://assets/furnitures/furnitures/furnitures-14.png" id="2_qboi1"]
-[ext_resource type="Texture2D" uid="uid://cp3mn81pctri1" path="res://assets/furnitures/furnitures/furnitures-15.png" id="3_7mvuo"]
-[ext_resource type="Texture2D" uid="uid://fwtsycy1x4gg" path="res://assets/furnitures/furnitures/sprite_10.png" id="3_exnci"]
-[ext_resource type="Texture2D" uid="uid://dfkxlnejagak" path="res://assets/furnitures/furnitures/sprite_11.png" id="4_qboi1"]
-[ext_resource type="Texture2D" uid="uid://vy36apqfk1xy" path="res://assets/furnitures/furnitures/furnitures-18.png" id="4_ynmuo"]
-[ext_resource type="Texture2D" uid="uid://0uklsadnjejl" path="res://assets/furnitures/furnitures/sprite_12.png" id="5_7mvuo"]
-[ext_resource type="Texture2D" uid="uid://dxa0mpqn35rjy" path="res://assets/furnitures/furnitures/sprite_15.png" id="8_yo78b"]
-[ext_resource type="Texture2D" uid="uid://368n680s604i" path="res://assets/furnitures/furnitures/sprite_16.png" id="9_5jv0w"]
-[ext_resource type="Texture2D" uid="uid://uujrvtvuth7s" path="res://assets/furnitures/furnitures/sprite_18.png" id="11_uid6m"]
-[ext_resource type="Texture2D" uid="uid://cuw8s12avot6h" path="res://assets/furnitures/furnitures/sprite_19.png" id="12_m45sk"]
-[ext_resource type="Texture2D" uid="uid://dheylr362rmvq" path="res://assets/furnitures/furnitures/sprite_02.png" id="13_uup73"]
-[ext_resource type="Texture2D" uid="uid://bu5a6pf3qr2ao" path="res://assets/furnitures/furnitures/sprite_20.png" id="14_nfo7i"]
-[ext_resource type="Texture2D" uid="uid://rdqxnqc3fowg" path="res://assets/furnitures/furnitures/sprite_21.png" id="15_13cw7"]
-[ext_resource type="Texture2D" uid="uid://yxx2ymkbhf4f" path="res://assets/furnitures/furnitures/sprite_22.png" id="16_iv0lt"]
-[ext_resource type="Texture2D" uid="uid://bcw1qhdcvnaep" path="res://assets/furnitures/furnitures/sprite_23.png" id="17_e80rn"]
-[ext_resource type="Texture2D" uid="uid://wmimcovj4jgs" path="res://assets/furnitures/furnitures/sprite_03.png" id="18_kafpv"]
-[ext_resource type="Texture2D" uid="uid://3gtjqm4temp1" path="res://assets/furnitures/furnitures/sprite_05.png" id="20_otiew"]
-[ext_resource type="Texture2D" uid="uid://cnlx2hedb7sx8" path="res://assets/furnitures/furnitures/sprite_06.png" id="21_evmbx"]
-[ext_resource type="Texture2D" uid="uid://blleap4ug32uh" path="res://assets/furnitures/furnitures/sprite_07.png" id="22_0vjxx"]
-[ext_resource type="Texture2D" uid="uid://bpit4coji2xns" path="res://assets/furnitures/furnitures/sprite_08.png" id="23_230ie"]
-[ext_resource type="Texture2D" uid="uid://6da2eudm77s0" path="res://assets/furnitures/furnitures/sprite_09.png" id="24_77fgy"]
-[ext_resource type="Texture2D" uid="uid://d3uvxtgsty7eu" path="res://assets/furnitures/furnitures/sprite_24.png" id="27_yo78b"]
-[ext_resource type="Texture2D" uid="uid://sluebex2cy88" path="res://assets/furnitures/furnitures/sprite_25.png" id="28_5jv0w"]
+[ext_resource type="Texture2D" uid="uid://r6h3s6ci1y8y" path="res://assets/furnitures/furnitures/sprite_00.png" id="1_fsdcx"]
+[ext_resource type="Texture2D" uid="uid://cljqh686m7k0n" path="res://assets/furnitures/furnitures/sprite_01.png" id="2_8n4y7"]
+[ext_resource type="Texture2D" uid="uid://bqti0dcawfncs" path="res://assets/furnitures/furnitures/sprite_10.png" id="3_exnci"]
+[ext_resource type="Texture2D" uid="uid://dj84nyl5n5w3r" path="res://assets/furnitures/furnitures/sprite_11.png" id="4_qboi1"]
+[ext_resource type="Texture2D" uid="uid://dx0ucyxawtx4a" path="res://assets/furnitures/furnitures/sprite_12.png" id="5_7mvuo"]
+[ext_resource type="Texture2D" uid="uid://dy8jymq6lfymu" path="res://assets/furnitures/furnitures/sprite_15.png" id="8_yo78b"]
+[ext_resource type="Texture2D" uid="uid://ovj27x8kl887" path="res://assets/furnitures/furnitures/sprite_16.png" id="9_5jv0w"]
+[ext_resource type="Texture2D" uid="uid://2uqw7ne23psi" path="res://assets/furnitures/furnitures/sprite_18.png" id="11_uid6m"]
+[ext_resource type="Texture2D" uid="uid://1lhjpda1u80p" path="res://assets/furnitures/furnitures/sprite_19.png" id="12_m45sk"]
+[ext_resource type="Texture2D" uid="uid://p46wk6j4bmtk" path="res://assets/furnitures/furnitures/sprite_02.png" id="13_uup73"]
+[ext_resource type="Texture2D" uid="uid://co01pa26cp1fs" path="res://assets/furnitures/furnitures/sprite_20.png" id="14_nfo7i"]
+[ext_resource type="Texture2D" uid="uid://ct43pghvm0plc" path="res://assets/furnitures/furnitures/sprite_21.png" id="15_13cw7"]
+[ext_resource type="Texture2D" uid="uid://7dmu2ydw7rcg" path="res://assets/furnitures/furnitures/sprite_22.png" id="16_iv0lt"]
+[ext_resource type="Texture2D" uid="uid://duv03oytmwbtc" path="res://assets/furnitures/furnitures/sprite_23.png" id="17_e80rn"]
+[ext_resource type="Texture2D" uid="uid://dclxsdhu777we" path="res://assets/furnitures/furnitures/sprite_03.png" id="18_kafpv"]
+[ext_resource type="Texture2D" uid="uid://bx7usm2asxqcn" path="res://assets/furnitures/furnitures/sprite_05.png" id="20_otiew"]
+[ext_resource type="Texture2D" uid="uid://b0e27xc56jyp6" path="res://assets/furnitures/furnitures/sprite_06.png" id="21_evmbx"]
+[ext_resource type="Texture2D" uid="uid://b4w6gufmsodd" path="res://assets/furnitures/furnitures/sprite_07.png" id="22_0vjxx"]
+[ext_resource type="Texture2D" uid="uid://dlp56txt8hw6t" path="res://assets/furnitures/furnitures/sprite_08.png" id="23_230ie"]
+[ext_resource type="Texture2D" uid="uid://mm6phld3jvaw" path="res://assets/furnitures/furnitures/sprite_09.png" id="24_77fgy"]
+[ext_resource type="Texture2D" uid="uid://d2003vi72006j" path="res://assets/furnitures/furnitures/sprite_24.png" id="27_yo78b"]
+[ext_resource type="Texture2D" uid="uid://byc6lw3q3twhl" path="res://assets/furnitures/furnitures/sprite_25.png" id="28_5jv0w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fnd6r"]
-texture = ExtResource("1_exnci")
 0:23/0 = 0
 1:23/0 = 0
 2:23/0 = 0
@@ -67,7 +62,6 @@ texture = ExtResource("1_exnci")
 8:26/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yo78b"]
-texture = ExtResource("2_qboi1")
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
@@ -597,7 +591,6 @@ texture = ExtResource("2_qboi1")
 26:26/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_exnci"]
-texture = ExtResource("3_7mvuo")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -2235,7 +2228,6 @@ texture = ExtResource("20_otiew")
 15:26/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qboi1"]
-texture = ExtResource("4_ynmuo")
 5:9/0 = 0
 6:9/0 = 0
 7:9/0 = 0
