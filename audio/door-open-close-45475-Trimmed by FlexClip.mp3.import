@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c8l1joxe6elso"
+path="res://.godot/imported/door-open-close-45475-Trimmed by FlexClip.mp3-5443905affd7ebd08ca0e38f99a06665.mp3str"
+
+[deps]
+
+source_file="res://audio/door-open-close-45475-Trimmed by FlexClip.mp3"
+dest_files=["res://.godot/imported/door-open-close-45475-Trimmed by FlexClip.mp3-5443905affd7ebd08ca0e38f99a06665.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq5vljo8yc806"]
+
+[ext_resource type="Script" uid="uid://b8e3yic0gfcph" path="res://scirpts/coin_stack.gd" id="1_y62i6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uk23m"]
+size = Vector2(36, 32)
+
+[node name="CoinStack" type="Area2D"]
+script = ExtResource("1_y62i6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_uk23m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

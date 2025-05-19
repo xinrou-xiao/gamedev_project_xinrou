@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://mu50rnecafq7"]
+[gd_scene load_steps=14 format=3 uid="uid://mu50rnecafq7"]
 
 [ext_resource type="Script" uid="uid://bjuva7l14y5ml" path="res://scirpts/main.gd" id="1_1j6d1"]
-[ext_resource type="PackedScene" uid="uid://bsrphuurxcwjy" path="res://scenes/Theft.tscn" id="2_mqxhw"]
+[ext_resource type="PackedScene" uid="uid://bsrphuurxcwjy" path="res://scenes/theft.tscn" id="2_mqxhw"]
 [ext_resource type="Script" uid="uid://b3liuoddvd5ve" path="res://scirpts/hud.gd" id="3_3dblt"]
 [ext_resource type="FontFile" uid="uid://1h5vd3h4d4xg" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="4_blwv4"]
 [ext_resource type="PackedScene" uid="uid://ntfugx7a0r0e" path="res://scenes/floors/level1.tscn" id="5_nfa5d"]
 [ext_resource type="Script" uid="uid://pwleigi8p2n4" path="res://scirpts/elavator.gd" id="6_3dblt"]
+[ext_resource type="AudioStream" uid="uid://judl8y3jm0h4" path="res://audio/cash-register-kaching-sound-effect-125042-Trimmed by FlexClip.mp3" id="7_choun"]
 [ext_resource type="Shader" uid="uid://c3xmyymar5ul5" path="res://shaders/warning.gdshader" id="7_o6xl0"]
 [ext_resource type="Shader" uid="uid://cbh8ag6rmrn5b" path="res://shaders/change_scene.gdshader" id="8_85g3d"]
 [ext_resource type="Script" uid="uid://cbf7jdiuyy0r3" path="res://scirpts/scene_transition.gd" id="9_choun"]
@@ -39,7 +40,7 @@ position = Vector2(3990, -149)
 shape = SubResource("RectangleShape2D_blwv4")
 
 [node name="Theft" parent="." instance=ExtResource("2_mqxhw")]
-position = Vector2(1257, 253)
+position = Vector2(1203, 299)
 
 [node name="Camera2D" type="Camera2D" parent="Theft"]
 position = Vector2(-43, 118)
@@ -85,6 +86,10 @@ offset_bottom = 432.0
 theme_override_fonts/font = ExtResource("4_blwv4")
 theme_override_font_sizes/font_size = 66
 text = "[E]"
+
+[node name="CashSound" type="AudioStreamPlayer" parent="HUD"]
+stream = ExtResource("7_choun")
+volume_db = -20.0
 
 [node name="DarkLight" type="DirectionalLight2D" parent="."]
 visible = false

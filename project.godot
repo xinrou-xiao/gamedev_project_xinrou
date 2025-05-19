@@ -20,11 +20,13 @@ config/icon="res://icon.svg"
 Floor_manager="*res://scirpts/floor_manager.gd"
 InteractableFacade="*res://scirpts/interactable_facade.gd"
 TextrueCache="*res://scirpts/textrue_cache.gd"
+Global="*res://scirpts/global.gd"
 
 [display]
 
 window/size/viewport_width=1024
 window/size/viewport_height=432
+window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 

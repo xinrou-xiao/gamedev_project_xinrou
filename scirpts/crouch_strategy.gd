@@ -18,8 +18,12 @@ func handle_movement(player: CharacterBody2D, delta: float) -> void:
 func play_animation(player: CharacterBody2D) -> void:
 	if is_idle:
 		player.theft.play("crouch_idle")
+		player.crouch_step.stop()
 	else:
 		player.theft.play("crouch")
+		if not player.crouch_step.playing:
+			player.crouch_step.play()
+		
 		
 func handle_flashlight(player: CharacterBody2D) -> void:
 	player.flash_light.position.y = 35

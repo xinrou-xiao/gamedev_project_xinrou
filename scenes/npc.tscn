@@ -1,7 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://col8dfkjhu5gn"]
+[gd_scene load_steps=14 format=3 uid="uid://col8dfkjhu5gn"]
 
 [ext_resource type="Script" uid="uid://coivruf7ra8uh" path="res://scirpts/npc.gd" id="1_uqy63"]
-[ext_resource type="Texture2D" uid="uid://ws2m1vhlg4aj" path="res://assets/NPCs/NPC-1.png" id="2_uqy63"]
+[ext_resource type="Texture2D" uid="uid://ws2m1vhlg4aj" path="res://assets/NPCs/idle/NPC-1.png" id="2_tl2vt"]
+[ext_resource type="Texture2D" uid="uid://dcl7bp3g8dlvc" path="res://assets/NPCs/chase/sprite_5.png" id="2_v4e37"]
+[ext_resource type="Texture2D" uid="uid://bco15o0debbcj" path="res://assets/NPCs/chase/sprite_6.png" id="3_1h837"]
+[ext_resource type="Texture2D" uid="uid://cqtvk5qwufx5" path="res://assets/NPCs/walk/sprite_1.png" id="3_tl2vt"]
+[ext_resource type="Texture2D" uid="uid://by4m14shs6hvg" path="res://assets/NPCs/chase/sprite_7.png" id="4_gl1un"]
+[ext_resource type="Texture2D" uid="uid://d3c7xtodmirlb" path="res://assets/NPCs/walk/sprite_2.png" id="4_hwkja"]
+[ext_resource type="Texture2D" uid="uid://c4xehffx0rq03" path="res://assets/NPCs/walk/sprite_3.png" id="5_0tygy"]
+[ext_resource type="Texture2D" uid="uid://b4ms2vf5revl0" path="res://assets/NPCs/chase/sprite_8.png" id="5_wuru7"]
+[ext_resource type="Texture2D" uid="uid://doh1ye3jtudwt" path="res://assets/NPCs/walk/sprite_4.png" id="6_sptji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqy63"]
 size = Vector2(131, 300)
@@ -10,11 +18,45 @@ size = Vector2(131, 300)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_uqy63")
+"texture": ExtResource("2_v4e37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1h837")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gl1un")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wuru7")
+}],
+"loop": true,
+"name": &"chase",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tl2vt")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tl2vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hwkja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0tygy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sptji")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 2.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t68w3"]
@@ -22,7 +64,7 @@ size = Vector2(131, 300)
 
 [node name="NPC" type="CharacterBody2D"]
 collision_layer = 32
-collision_mask = 19
+collision_mask = 18
 script = ExtResource("1_uqy63")
 
 [node name="PhysicBody" type="CollisionShape2D" parent="."]
@@ -33,10 +75,11 @@ shape = SubResource("RectangleShape2D_uqy63")
 position = Vector2(-3, -2)
 sprite_frames = SubResource("SpriteFrames_t68w3")
 animation = &"idle"
+frame_progress = 0.641838
 
 [node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
 position = Vector2(-6, -76)
-target_position = Vector2(279, 0)
+target_position = Vector2(300, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -44,4 +87,9 @@ target_position = Vector2(279, 0)
 position = Vector2(-12.5, -2)
 shape = SubResource("RectangleShape2D_t68w3")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

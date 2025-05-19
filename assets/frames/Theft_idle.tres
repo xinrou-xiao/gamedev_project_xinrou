@@ -38,7 +38,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"crouch",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 6.0,

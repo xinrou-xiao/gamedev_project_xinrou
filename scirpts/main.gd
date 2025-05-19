@@ -8,8 +8,9 @@ var current_floor: int = 1
 @onready var transition = $Transition/ChangeScene
 
 func  _physics_process(delta: float) -> void:
-	if NPC.current_state == NPC.States.CHASE:
-		flash_red_alert()
+	pass
+	#if NPC.state == NPC.States.CHASE:
+		#flash_red_alert()
 
 func load_scene():
 	var floor_scene = Floor_manager.get_floor(current_floor + 1)

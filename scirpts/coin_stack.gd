@@ -1,9 +1,9 @@
 extends Area2D
 
-const MONEY_AMOUNT = 100
+const MONEY_AMOUNT = 5
 signal money_stack_collected
 @onready var sripte = $Sprite2D
-@export var texture_path = "res://assets/target/sprite_4.png"
+@export var texture_path = "res://assets/target/sprite_2.png"
 
 func _ready():
 	sripte.texture = TextrueCache.get_texture(texture_path)

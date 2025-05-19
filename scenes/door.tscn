@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://12htgyayucxj"]
+[gd_scene load_steps=6 format=3 uid="uid://12htgyayucxj"]
 
 [ext_resource type="Script" uid="uid://bx0w0kj6sq4k7" path="res://scirpts/door.gd" id="1_xdr17"]
+[ext_resource type="AudioStream" uid="uid://c8l1joxe6elso" path="res://audio/door-open-close-45475-Trimmed by FlexClip.mp3" id="2_uvdjg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xdr17"]
 
@@ -29,6 +30,10 @@ shape = SubResource("RectangleShape2D_xdr17")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
 position = Vector2(0.5, 18)
 shape = SubResource("RectangleShape2D_d0dfd")
+
+[node name="door_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_uvdjg")
+volume_db = -20.53
 
 [connection signal="body_entered" from="Node2D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Node2D" to="." method="_on_body_exited"]

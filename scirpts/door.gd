@@ -2,8 +2,9 @@ extends Node2D
 
 @onready var door = $Sprite2D
 @onready var collision = $Sprite2D/StaticBody2D/CollisionShape2D
-@export var door_clsoed = "res://assets/furnitures/furnitures-32.png"
-@export var door_opened = "res://assets/furnitures/furnitures-33.png"
+@onready var door_sound = $door_sound
+@export var door_clsoed = "res://assets/furnitures/sprite_32.png"
+@export var door_opened = "res://assets/furnitures/sprite_33.png"
 var is_open = false
 
 func _ready() -> void:
@@ -25,3 +26,4 @@ func interact(body: Node2D) -> void:
 		door.texture = TextrueCache.get_texture(door_opened)
 		collision.disabled = true
 	is_open = !is_open
+	door_sound.play()

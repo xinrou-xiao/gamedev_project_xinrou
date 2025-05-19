@@ -15,10 +15,12 @@ func interact(body: Node2D) -> void:
 func hide(body: Node2D):
 	hiding = true
 	body.hide()
+	body.remove_from_group("outside_player")
 	furniture.play("hide")
 	await furniture.animation_finished
 	
 func get_out(body: Node2D):
 	hiding = false
 	body.show()
+	body.add_to_group("outside_player")
 	furniture.play("default")

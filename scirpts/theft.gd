@@ -1,14 +1,16 @@
 extends CharacterBody2D
 
-const SPEED = 500
-const CROUCH_SPEED = 250
+const SPEED = 500 #200
+const CROUCH_SPEED = 100
 const GRAVITY = 60
 const JUMPFORCE = -1000
 
 @onready var e_prompt = $CanvasModulate/hint
 @onready var theft = $Sprite2D
 @onready var flash_light = $Flashlight
-
+@onready var collision = $CollisionShape2D
+@onready var walk_step = $WalkStep
+@onready var crouch_step = $CrouchStep
 var in_standing = true
 var money = 0
 var skip_physics_process = false
@@ -16,11 +18,14 @@ var movement_strategy: MovementStrategy = null
 
 func _ready() -> void:
 	add_to_group("player")
+	add_to_group("outside_player")
+	Global.player = self
+	
 
 func _physics_process(delta):
 	if not self.visible or skip_physics_process:
 		return
-		
+	
 	if !is_on_floor():
 		movement_strategy = AirborneStrategy.new()	
 	elif Input.is_action_pressed("crouch"):
@@ -28,7 +33,7 @@ func _physics_process(delta):
 	else:
 		movement_strategy = WalkStrategy.new()
 	
-	movement_strategy.handle_movement(self,  delta)
+	movement_strategy.handle_movement(self, delta)
 	movement_strategy.handle_flashlight(self)
 	movement_strategy.play_animation(self)
 	
