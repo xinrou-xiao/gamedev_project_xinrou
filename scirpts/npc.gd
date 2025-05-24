@@ -45,3 +45,7 @@ func _on_sound_area_body_entered(body: Node2D) -> void:
 
 func _on_sound_area_body_exited(body: Node2D) -> void:
 	state.get_out_of_area(body)
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player") and body.is_in_group("outside_player"):
+		get_tree().change_scene_to_file("res://scenes/game over.tscn")

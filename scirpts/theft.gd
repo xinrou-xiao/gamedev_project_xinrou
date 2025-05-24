@@ -47,6 +47,9 @@ func _physics_process(delta):
 			speed = RUN_SPEED
 			if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 				current_sp -= delta * RUN_REDUCE_SP_PER_SECOND
+			else:
+				current_sp += delta * RUN_REDUCE_SP_PER_SECOND
+
 			walk_step.pitch_scale = 2
 			walk_step.volume_db = 3
 			
