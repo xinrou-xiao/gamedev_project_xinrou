@@ -9,9 +9,11 @@ size = Vector2(36, 32)
 script = ExtResource("1_y62i6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -33)
+offset = Vector2(0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 16)
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_uk23m")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

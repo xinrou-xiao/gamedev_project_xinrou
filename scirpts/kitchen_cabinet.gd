@@ -1,4 +1,4 @@
-extends HidableFurnitures
+extends HideableFurnitures
 
 func _ready() -> void:
 	furniture = $Cabinet
@@ -10,3 +10,11 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		InteractableFacade.clear_target(self)
+
+func hide(body: Node2D):
+	hiding = true
+	body.hide()
+	body.remove_from_group("outside_player")
+	furniture.play("hide")
+	await furniture.animation_finished
+	furniture.play("default")

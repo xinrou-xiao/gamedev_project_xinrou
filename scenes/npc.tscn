@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://col8dfkjhu5gn"]
+[gd_scene load_steps=16 format=3 uid="uid://col8dfkjhu5gn"]
 
 [ext_resource type="Script" uid="uid://coivruf7ra8uh" path="res://scirpts/npc.gd" id="1_uqy63"]
 [ext_resource type="Texture2D" uid="uid://ws2m1vhlg4aj" path="res://assets/NPCs/idle/NPC-1.png" id="2_tl2vt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c4xehffx0rq03" path="res://assets/NPCs/walk/sprite_3.png" id="5_0tygy"]
 [ext_resource type="Texture2D" uid="uid://b4ms2vf5revl0" path="res://assets/NPCs/chase/sprite_8.png" id="5_wuru7"]
 [ext_resource type="Texture2D" uid="uid://doh1ye3jtudwt" path="res://assets/NPCs/walk/sprite_4.png" id="6_sptji"]
+[ext_resource type="Texture2D" uid="uid://cq1oxmxxn7r6o" path="res://assets/NPCs/sleep/sleep.png" id="7_1h837"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqy63"]
 size = Vector2(131, 300)
@@ -43,6 +44,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("7_1h837")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_tl2vt")
 }, {
 "duration": 1.0,
@@ -62,6 +71,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t68w3"]
 size = Vector2(131, 300)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl1un"]
+size = Vector2(886, 302)
+
 [node name="NPC" type="CharacterBody2D"]
 collision_layer = 32
 collision_mask = 18
@@ -73,13 +85,13 @@ shape = SubResource("RectangleShape2D_uqy63")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3, -2)
+scale = Vector2(1.05, 1.05)
 sprite_frames = SubResource("SpriteFrames_t68w3")
-animation = &"idle"
-frame_progress = 0.641838
+animation = &"sleep"
 
 [node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
 position = Vector2(-6, -76)
-target_position = Vector2(300, 0)
+target_position = Vector2(200, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -91,5 +103,12 @@ shape = SubResource("RectangleShape2D_t68w3")
 wait_time = 3.0
 one_shot = true
 
+[node name="SoundArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundArea"]
+shape = SubResource("RectangleShape2D_gl1un")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="SoundArea" to="." method="_on_sound_area_body_entered"]
+[connection signal="body_exited" from="SoundArea" to="." method="_on_sound_area_body_exited"]

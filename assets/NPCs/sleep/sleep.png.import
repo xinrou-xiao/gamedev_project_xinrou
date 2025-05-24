@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu5h2yylcvcel"
-path="res://.godot/imported/sprite_01.png-b479b354fdc7ed4d437747dddc81f72a.ctex"
+uid="uid://cq1oxmxxn7r6o"
+path="res://.godot/imported/sleep.png-fdd2237e947fa045cdeeaf55c2fa09d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/furnitures/sprite_01.png"
-dest_files=["res://.godot/imported/sprite_01.png-b479b354fdc7ed4d437747dddc81f72a.ctex"]
+source_file="res://assets/NPCs/sleep/sleep.png"
+dest_files=["res://.godot/imported/sleep.png-fdd2237e947fa045cdeeaf55c2fa09d4.ctex"]
 
 [params]
 

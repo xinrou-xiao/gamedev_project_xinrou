@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=4 uid="uid://ntfugx7a0r0e"]
+[gd_scene load_steps=15 format=4 uid="uid://ntfugx7a0r0e"]
 
 [ext_resource type="Script" uid="uid://o2koyt88xp7l" path="res://scirpts/level_1.gd" id="1_guuw0"]
 [ext_resource type="TileSet" uid="uid://dr7w78ecq2lua" path="res://assets/frames/walls.tres" id="1_p8550"]
-[ext_resource type="PackedScene" uid="uid://bij3wvljbins8" path="res://scenes/money_stack.tscn" id="3_ou183"]
 [ext_resource type="PackedScene" uid="uid://ddadmmlbkhoo7" path="res://scenes/closet.tscn" id="3_v7qsi"]
 [ext_resource type="Texture2D" uid="uid://bmbqkyha3gq4g" path="res://assets/furnitures/sprite_07.png" id="3_yst04"]
 [ext_resource type="PackedScene" uid="uid://12htgyayucxj" path="res://scenes/door.tscn" id="4_ff4j5"]
@@ -53,7 +52,7 @@ texture = ExtResource("15_470fo")
 [node name="Furnitures" type="Node2D" parent="House"]
 
 [node name="Closet" parent="House/Furnitures" instance=ExtResource("3_v7qsi")]
-position = Vector2(1486, 221)
+position = Vector2(1486, 225)
 
 [node name="Bed" parent="House/Furnitures" instance=ExtResource("4_y0lb6")]
 position = Vector2(218, 225)
@@ -67,14 +66,6 @@ position = Vector2(1968, 225)
 [node name="RestroomCabinet" parent="House/Furnitures" instance=ExtResource("7_mfdj4")]
 position = Vector2(2430, 225)
 
-[node name="Target" type="Node2D" parent="."]
-
-[node name="Money1" parent="Target" instance=ExtResource("3_ou183")]
-position = Vector2(2449, 283)
-
-[node name="Money2" parent="Target" instance=ExtResource("3_ou183")]
-position = Vector2(2214, 327)
-
 [node name="Doors" type="Node2D" parent="."]
 
 [node name="Door" parent="Doors" instance=ExtResource("4_ff4j5")]
@@ -83,7 +74,4 @@ position = Vector2(3448, 255)
 [node name="NPCs" type="Node2D" parent="."]
 
 [node name="NPC" parent="NPCs" instance=ExtResource("9_wsu2r")]
-position = Vector2(479, 293)
-
-[connection signal="money_stack_collected" from="Target/Money1" to="." method="_on_money_stack_collected"]
-[connection signal="money_stack_collected" from="Target/Money2" to="." method="_on_money_stack_collected"]
+position = Vector2(217, 224)

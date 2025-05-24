@@ -17,9 +17,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_akw82")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_cn0uq")
 }],
 "loop": false,
 "name": &"hide",

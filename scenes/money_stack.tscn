@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bij3wvljbins8"]
+[gd_scene load_steps=5 format=3 uid="uid://bij3wvljbins8"]
 
 [ext_resource type="Script" uid="uid://bsakmxtgos0ed" path="res://scirpts/money_stack.gd" id="1_cik1j"]
 [ext_resource type="Shader" uid="uid://dp1h2do6j1qdj" path="res://shaders/money_stack.gdshader" id="2_28jyf"]
-[ext_resource type="Texture2D" uid="uid://d0pypfiixv8m0" path="res://assets/target/sprite_4.png" id="3_eup1q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cik1j"]
 size = Vector2(52, 18)
@@ -20,12 +19,13 @@ collision_layer = 8
 script = ExtResource("1_cik1j")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_cik1j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_eup1q")
-position = Vector2(6, -23)
-texture = ExtResource("3_eup1q")
+position = Vector2(6, 0)
+offset = Vector2(0, -32)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,4 +1,4 @@
-extends HidableFurnitures
+extends HideableFurnitures
 
 func _ready() -> void:
 	furniture = $Bathtube

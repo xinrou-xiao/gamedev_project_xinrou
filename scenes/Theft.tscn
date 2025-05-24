@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsrphuurxcwjy"]
+[gd_scene load_steps=8 format=3 uid="uid://bsrphuurxcwjy"]
 
 [ext_resource type="Script" uid="uid://c8g2i8173v0no" path="res://scirpts/theft.gd" id="1_sepdr"]
 [ext_resource type="Texture2D" uid="uid://coxdj3u7ynesl" path="res://assets/light/256x256 textures (27).png" id="2_f6f35"]
 [ext_resource type="SpriteFrames" uid="uid://dvcqmol63ccqk" path="res://assets/frames/Theft_idle.tres" id="2_sepdr"]
 [ext_resource type="AudioStream" uid="uid://dqycmhr2hubim" path="res://audio/step on carpet-Trimmed.mp3" id="4_1kbei"]
+[ext_resource type="Texture2D" uid="uid://cjdhxwbknouk0" path="res://assets/stemina bar/under.png" id="5_s3xnv"]
+[ext_resource type="Texture2D" uid="uid://l7s5cni4aydy" path="res://assets/stemina bar/progress.png" id="6_fqhau"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6f35"]
 size = Vector2(176, 257)
@@ -23,8 +25,7 @@ texture_scale = 1.7
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
 sprite_frames = ExtResource("2_sepdr")
-animation = &"crouch"
-frame_progress = 0.471905
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(7, -0.5)
@@ -39,5 +40,18 @@ pitch_scale = 1.57
 stream = ExtResource("4_1kbei")
 volume_db = -7.0
 pitch_scale = 1.3
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 77.0
+offset_top = -131.0
+offset_right = 85.0
+offset_bottom = -36.0
+scale = Vector2(0.555622, 0.773758)
+value = 93.0
+fill_mode = 3
+texture_under = ExtResource("5_s3xnv")
+texture_progress = ExtResource("6_fqhau")
+
+[node name="ResumeCountDown" type="Timer" parent="."]
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]

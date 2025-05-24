@@ -3,7 +3,7 @@ extends Node
 class_name MovementStrategy
 
 
-func handle_movement(player: CharacterBody2D, delta: float) -> void:
+func handle_movement(player: CharacterBody2D, delta: float, speed: int) -> void:
 	pass
 
 func play_animation(player: CharacterBody2D) -> void:

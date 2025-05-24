@@ -16,7 +16,7 @@ func generate_money():
 	randomize()
 	var pick = randi() % money_scence.size()
 	loc.x = randf_range(0, 3456)
-	loc.y = randf_range(200, 430)
+	loc.y = 440
 	var scene = money_scence[pick].instantiate()
 	scene.position = loc
 	add_child(scene)

@@ -1,6 +1,6 @@
 extends Node
 
-class_name HidableFurnitures
+class_name HideableFurnitures
 
 var hiding = false
 var furniture = null
@@ -10,7 +10,7 @@ func interact(body: Node2D) -> void:
 		if hiding:
 			get_out(body)
 		else:
-			hide(body)		
+			hide(body)
 	
 func hide(body: Node2D):
 	hiding = true

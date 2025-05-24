@@ -4,12 +4,12 @@ class_name CrouchStrategy
 
 var is_idle = false
 
-func handle_movement(player: CharacterBody2D, delta: float) -> void:
+func handle_movement(player: CharacterBody2D, delta: float, speed: int) -> void:
 	if Input.is_action_pressed("right"):
-		player.velocity.x = player.CROUCH_SPEED
+		player.velocity.x = speed
 		player.theft.flip_h = false
 	elif Input.is_action_pressed("left"):
-		player.velocity.x = -player.CROUCH_SPEED
+		player.velocity.x = -speed
 		player.theft.flip_h = true
 	else:
 		is_idle = true
