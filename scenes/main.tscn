@@ -40,7 +40,7 @@ position = Vector2(3990, -149)
 shape = SubResource("RectangleShape2D_blwv4")
 
 [node name="Theft" parent="." instance=ExtResource("2_mqxhw")]
-position = Vector2(1203, 299)
+position = Vector2(3822, 305)
 
 [node name="Camera2D" type="Camera2D" parent="Theft"]
 position = Vector2(-43, 118)

@@ -26,7 +26,7 @@ func on_sound_heard():
 		var listen_base_area = npc.sound_area.shape.size.x / 2
 		var distance = abs(npc.position.x - npc.player.position.x)
 		npc.HEARD_CHANCE = listen_base_area / distance / get_divident()
-		print(npc.HEARD_CHANCE)
+		
 		if randf() <= npc.HEARD_CHANCE:
 			npc.position.y = 290
 			npc.change_state(ChaseState.new(npc))
