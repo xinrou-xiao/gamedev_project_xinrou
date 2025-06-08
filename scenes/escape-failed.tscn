@@ -1,0 +1,101 @@
+[gd_scene load_steps=13 format=3 uid="uid://c4cm8f1vxo37l"]
+
+[ext_resource type="FontFile" uid="uid://1h5vd3h4d4xg" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="1_hqv6c"]
+[ext_resource type="Script" uid="uid://cv7nak4c74nf" path="res://scirpts/won.gd" id="1_w8kld"]
+[ext_resource type="Texture2D" uid="uid://ia2yojm338a5" path="res://assets/endings/escape-failed/escape-failed0.png" id="5_1lu7g"]
+[ext_resource type="Texture2D" uid="uid://de3nowlhwa7nr" path="res://assets/target/sprite_0.png" id="5_kg3bq"]
+[ext_resource type="Shader" uid="uid://bjs1pxtuk2xio" path="res://shaders/spread_moeny.gdshader" id="5_u5o4t"]
+[ext_resource type="Texture2D" uid="uid://biyv1hytkx3v8" path="res://assets/endings/escape-normal/escape-normal0.png" id="5_v1yft"]
+[ext_resource type="Texture2D" uid="uid://d3hgb77gld8v4" path="res://assets/endings/escape-failed/escape-failed1.png" id="6_v1yft"]
+[ext_resource type="Texture2D" uid="uid://dp6dk75ohn3ud" path="res://assets/endings/escape-failed/escape-failed2.png" id="7_d3qc5"]
+[ext_resource type="Texture2D" uid="uid://bx01miylpl272" path="res://assets/endings/escape-failed/escape-failed3.png" id="8_kggvj"]
+[ext_resource type="Texture2D" uid="uid://bu6qn2qid8pi4" path="res://assets/endings/escape-failed/escape-failed4.png" id="9_xnpky"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_curva"]
+shader = ExtResource("5_u5o4t")
+shader_parameter/shine_speed = 2.0
+shader_parameter/min_alpha = 0.3
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xb086"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_v1yft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1lu7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v1yft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_d3qc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kggvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xnpky")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Won" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w8kld")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1025.0
+offset_bottom = 432.0
+color = Color(0.277506, 0.389547, 0.501957, 1)
+
+[node name="YouWon" type="Label" parent="."]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 73.0
+offset_right = 804.0
+offset_bottom = 261.0
+theme_override_fonts/font = ExtResource("1_hqv6c")
+theme_override_font_sizes/font_size = 156
+text = "You Lost"
+
+[node name="BackToMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 350.0
+offset_right = 607.0
+offset_bottom = 395.0
+theme_override_fonts/font = ExtResource("1_hqv6c")
+theme_override_font_sizes/font_size = 30
+text = "Back to menu"
+flat = true
+
+[node name="MoneyParticles" type="CPUParticles2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_curva")
+position = Vector2(482, -75)
+scale = Vector2(0.6, 0.6)
+amount = 20
+texture = ExtResource("5_kg3bq")
+lifetime = 5.0
+spread = 180.0
+gravity = Vector2(0, 50)
+initial_velocity_min = 50.0
+initial_velocity_max = 150.0
+color = Color(1, 0.9, 0.7, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1017, 383)
+scale = Vector2(0.361328, 0.340809)
+sprite_frames = SubResource("SpriteFrames_xb086")
+autoplay = "default"
+
+[connection signal="pressed" from="BackToMenu" to="." method="_on_button_pressed"]

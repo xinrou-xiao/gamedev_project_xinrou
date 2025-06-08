@@ -2,6 +2,7 @@ extends RefCounted
 class_name NPCState
 
 var npc: NPC
+var name: String
 
 func _init(npc):
 	self.npc = npc

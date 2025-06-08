@@ -23,6 +23,7 @@ const NORMAL_RAY_LENGTH = 200
 const CHASE_RAY_LENGTH = 400
 
 var state: NPCState
+var current_state = "SLEEP"
 
 func _ready() -> void:
 	left_bounds = self.position + Vector2(max(-NORMAL_RAY_LENGTH, 0), 0)
@@ -36,6 +37,7 @@ func _physics_process(delta: float) -> void:
 
 func change_state(new_state: NPCState):
 	state = new_state
+	current_state = new_state.name
 
 func _on_timer_timeout() -> void:
 	state.on_timer_timeout()

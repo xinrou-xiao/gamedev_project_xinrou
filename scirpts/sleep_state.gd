@@ -8,6 +8,10 @@ const WALK_DEVIDENT = 50
 const CROUCH_DEVIDENT = 1000
 const IDLE_DEVIDENT = 1000000
 
+func _init(npc: NPC) -> void:
+	super._init(npc)
+	name = "SLEEP"
+
 func physics_process(delta: float):
 	npc.sprite.play("sleep")
 	npc.ray_cast.enabled = false

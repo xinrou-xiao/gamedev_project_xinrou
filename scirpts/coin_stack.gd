@@ -1,6 +1,7 @@
 extends Area2D
 
 const MONEY_AMOUNT = 5
+const WEIGHT = 0.005
 signal money_stack_collected
 @onready var sripte = $Sprite2D
 @export var texture_path = "res://assets/target/sprite_2.png"
@@ -18,6 +19,7 @@ func _on_body_exited(body: Node2D) -> void:
 		
 func interact(body: Node2D):
 	queue_free()
+	body.addWeight(WEIGHT)
 	body.addMoney(MONEY_AMOUNT)
 	body.play_grab()
 	Global.money_count = Global.money_count + MONEY_AMOUNT

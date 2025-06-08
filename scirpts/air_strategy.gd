@@ -3,7 +3,7 @@ extends MovementStrategy
 
 class_name AirborneStrategy
 
-func handle_movement(player: CharacterBody2D, delta: float, speed: int) -> void:
+func handle_movement(player: CharacterBody2D, delta: float, speed: float) -> void:
 	if Input.is_action_pressed("right"):
 		player.velocity.x = speed
 		player.theft.flip_h = false

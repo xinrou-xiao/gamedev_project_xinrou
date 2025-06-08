@@ -4,6 +4,7 @@ class_name ChaseState
 func _init(npc):
 	super(npc)
 	npc.timer.stop()
+	name = "CHASE"
 
 func physics_process(delta: float):
 	npc.ray_cast.enabled = true
@@ -46,4 +47,3 @@ func look_for_player():
 
 func on_timer_timeout():
 	npc.change_state(WanderState.new(npc))
-	

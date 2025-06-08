@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ddadmmlbkhoo7"]
 
 [ext_resource type="Texture2D" uid="uid://b15ta6eckd38h" path="res://assets/furnitures/sprite_03.png" id="1_l4o33"]
-[ext_resource type="Script" uid="uid://rsbvyg3xd5b5" path="res://closet.gd" id="1_uj11n"]
+[ext_resource type="Script" uid="uid://rsbvyg3xd5b5" path="res://scirpts/closet.gd" id="1_uj11n"]
 [ext_resource type="Texture2D" uid="uid://bmiwu3032igji" path="res://assets/furnitures/sprite_04.png" id="2_uj11n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_71km3"]

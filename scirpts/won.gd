@@ -2,6 +2,8 @@ extends Control
 
 @onready var particles = $MoneyParticles
 @onready var restart_button = $BackToMenu
+@onready var sprite = $AnimatedSprite2D
+@onready var tween = get_tree().create_tween()
 
 func _on_button_pressed() -> void:
 	particles.emitting = false
@@ -10,6 +12,7 @@ func _on_button_pressed() -> void:
 func _ready():
 	particles.emitting = false
 	show_win()
+	start_bobbing()
 
 func show_win():
 	modulate = Color.TRANSPARENT
@@ -19,3 +22,10 @@ func show_win():
 	tween.tween_callback(func(): 
 		particles.emitting = true
 	).set_delay(0.3)
+	
+func start_bobbing():
+	var original_y = sprite.position.y
+	tween.set_loops() 
+	tween.tween_property(sprite, "position:y", original_y - 10, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(sprite, "position:y", original_y + 10, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(sprite, "position:y", original_y, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

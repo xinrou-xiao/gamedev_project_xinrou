@@ -19,3 +19,9 @@ func clear_floor(floor_number: int) -> void:
 	if _floors.has(floor_number):
 		_floors[floor_number].queue_free()
 		_floors.erase(floor_number)
+		
+func reset():
+	for floor in _floors.values():
+		if is_instance_valid(floor):
+			floor.queue_free()
+	_floors.clear()

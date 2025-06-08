@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-const RUN_SPEED = 500
-const WALK_SPEED = 250
-const CROUCH_SPEED = 100
+const RUN_SPEED = 700
+const WALK_SPEED = 300
+const CROUCH_SPEED = 150
 const GRAVITY = 60
 const JUMPFORCE = -1000
 const RUN_REDUCE_SP_PER_SECOND = 100
@@ -22,6 +22,7 @@ var money = 0
 var skip_physics_process = false
 var movement_strategy: MovementStrategy = null
 var speed = WALK_SPEED
+var slow_accumulate = 0.0
 
 func _ready() -> void:
 	add_to_group("player")
@@ -68,7 +69,7 @@ func _physics_process(delta):
 	
 	sp.value = clamp(current_sp, sp.min_value, sp.max_value)
 	
-	movement_strategy.handle_movement(self, delta, speed)
+	movement_strategy.handle_movement(self, delta, (speed * (1 - slow_accumulate)))
 	movement_strategy.handle_flashlight(self)
 	movement_strategy.play_animation(self)
 	
@@ -91,6 +92,9 @@ func _process(delta: float) -> void:
 
 func addMoney(amount: int):
 	money = money + amount
+	
+func addWeight(weight: float):
+	slow_accumulate = slow_accumulate + weight
 
 func play_grab():
 	if theft.animation == "grab":

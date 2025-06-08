@@ -1,0 +1,111 @@
+[gd_scene load_steps=15 format=3 uid="uid://cmwncees7xvxf"]
+
+[ext_resource type="FontFile" uid="uid://1h5vd3h4d4xg" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="1_hqv6c"]
+[ext_resource type="Script" uid="uid://cv7nak4c74nf" path="res://scirpts/won.gd" id="1_w8kld"]
+[ext_resource type="Shader" uid="uid://b8bvh1gsvjhvh" path="res://shaders/won.gdshader" id="2_7ifpe"]
+[ext_resource type="Shader" uid="uid://dtj6t7tnkov62" path="res://shaders/won_background.gdshader" id="2_jc46y"]
+[ext_resource type="Texture2D" uid="uid://de3nowlhwa7nr" path="res://assets/target/sprite_0.png" id="5_kg3bq"]
+[ext_resource type="Shader" uid="uid://bjs1pxtuk2xio" path="res://shaders/spread_moeny.gdshader" id="5_u5o4t"]
+[ext_resource type="Texture2D" uid="uid://biyv1hytkx3v8" path="res://assets/endings/escape-normal/escape-normal0.png" id="7_08474"]
+[ext_resource type="Texture2D" uid="uid://dfvtdbeuwqqny" path="res://assets/endings/escape-normal/escape-normal1.png" id="8_ieqll"]
+[ext_resource type="Texture2D" uid="uid://cqrvohhgq32br" path="res://assets/endings/escape-normal/escape-normal2.png" id="9_5eyun"]
+[ext_resource type="Texture2D" uid="uid://bqhjvg0hwhtw4" path="res://assets/endings/escape-normal/escape-normal3.png" id="10_fdtyl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kg3bq"]
+shader = ExtResource("2_jc46y")
+shader_parameter/color1 = Color(0.137, 0.168, 0.385, 1)
+shader_parameter/color2 = Color(0.361, 0.669, 0.783, 1)
+shader_parameter/speed = 3.422
+shader_parameter/wave_intensity = 0.103
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ifpe"]
+shader = ExtResource("2_7ifpe")
+shader_parameter/outline_size = 0.001
+shader_parameter/gold_color1 = Color(0.274985, 0.469397, 0.760475, 1)
+shader_parameter/gold_color2 = Color(0.716645, 0.548128, 0.980547, 1)
+shader_parameter/shine_speed = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_curva"]
+shader = ExtResource("5_u5o4t")
+shader_parameter/shine_speed = 2.0
+shader_parameter/min_alpha = 0.3
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qeq1a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_08474")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ieqll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5eyun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fdtyl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Won" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w8kld")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_kg3bq")
+layout_mode = 0
+offset_right = 1025.0
+offset_bottom = 432.0
+color = Color(0.11378, 0.18699, 0.119425, 1)
+
+[node name="YouWon" type="Label" parent="."]
+material = SubResource("ShaderMaterial_7ifpe")
+layout_mode = 0
+offset_left = 212.0
+offset_top = 73.0
+offset_right = 804.0
+offset_bottom = 261.0
+theme_override_fonts/font = ExtResource("1_hqv6c")
+theme_override_font_sizes/font_size = 156
+text = "You won"
+
+[node name="BackToMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 350.0
+offset_right = 607.0
+offset_bottom = 395.0
+theme_override_fonts/font = ExtResource("1_hqv6c")
+theme_override_font_sizes/font_size = 30
+text = "Back to menu"
+flat = true
+
+[node name="MoneyParticles" type="CPUParticles2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_curva")
+position = Vector2(482, -75)
+scale = Vector2(0.6, 0.6)
+amount = 20
+texture = ExtResource("5_kg3bq")
+lifetime = 5.0
+spread = 180.0
+gravity = Vector2(0, 50)
+initial_velocity_min = 50.0
+initial_velocity_max = 150.0
+color = Color(1, 0.9, 0.7, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1029, 399)
+scale = Vector2(0.361328, 0.340809)
+sprite_frames = SubResource("SpriteFrames_qeq1a")
+autoplay = "default"
+
+[connection signal="pressed" from="BackToMenu" to="." method="_on_button_pressed"]

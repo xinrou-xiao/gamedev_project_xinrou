@@ -1,6 +1,10 @@
 extends NPCState
 class_name WanderState
 
+func _init(npc: NPC) -> void:
+	super._init(npc)
+	name = "WANDER"
+
 func physics_process(delta: float):
 	npc.ray_cast.enabled = true
 	handle_gravity(delta)

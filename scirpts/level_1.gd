@@ -21,3 +21,4 @@ func generate_money():
 	scene.position = loc
 	add_child(scene)
 	scene.connect("money_stack_collected", Callable(self, "_on_money_stack_collected"))
+	Global.total_money = Global.total_money + scene.MONEY_AMOUNT
