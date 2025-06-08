@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bh8ovfrb0nd26"]
+[gd_scene load_steps=20 format=3 uid="uid://bh8ovfrb0nd26"]
 
 [ext_resource type="FontFile" uid="uid://1h5vd3h4d4xg" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="1_hqv6c"]
 [ext_resource type="Script" uid="uid://cv7nak4c74nf" path="res://scirpts/won.gd" id="1_w8kld"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bqqx5hmf5pxcx" path="res://assets/endings/escape-perfect/escape-perfect5.png" id="12_jwfcl"]
 [ext_resource type="Texture2D" uid="uid://ca7kljug7v0rv" path="res://assets/endings/escape-perfect/escape-perfect6.png" id="13_hdhqf"]
 [ext_resource type="Texture2D" uid="uid://dx8iwt17vfyfn" path="res://assets/endings/escape-perfect/escape-perfect7.png" id="14_breqe"]
+[ext_resource type="AudioStream" uid="uid://cma0n10lj4mk5" path="res://audio/all-i-do-is-win-323628.mp3" id="15_gtbg3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kg3bq"]
 shader = ExtResource("2_jc46y")
@@ -105,7 +106,6 @@ text = "Back to menu"
 flat = true
 
 [node name="MoneyParticles" type="CPUParticles2D" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_curva")
 position = Vector2(482, -75)
 scale = Vector2(0.6, 0.6)
@@ -125,5 +125,10 @@ sprite_frames = SubResource("SpriteFrames_q385e")
 autoplay = "default"
 frame = 4
 frame_progress = 0.103268
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_gtbg3")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="pressed" from="BackToMenu" to="." method="_on_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4cm8f1vxo37l"]
+[gd_scene load_steps=14 format=3 uid="uid://c4cm8f1vxo37l"]
 
 [ext_resource type="FontFile" uid="uid://1h5vd3h4d4xg" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="1_hqv6c"]
 [ext_resource type="Script" uid="uid://cv7nak4c74nf" path="res://scirpts/won.gd" id="1_w8kld"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dp6dk75ohn3ud" path="res://assets/endings/escape-failed/escape-failed2.png" id="7_d3qc5"]
 [ext_resource type="Texture2D" uid="uid://bx01miylpl272" path="res://assets/endings/escape-failed/escape-failed3.png" id="8_kggvj"]
 [ext_resource type="Texture2D" uid="uid://bu6qn2qid8pi4" path="res://assets/endings/escape-failed/escape-failed4.png" id="9_xnpky"]
+[ext_resource type="AudioStream" uid="uid://iq1rjdlsjo8c" path="res://audio/kl-peach-game-over-ii-135684.mp3" id="11_d3qc5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_curva"]
 shader = ExtResource("5_u5o4t")
@@ -97,5 +98,10 @@ position = Vector2(1017, 383)
 scale = Vector2(0.361328, 0.340809)
 sprite_frames = SubResource("SpriteFrames_xb086")
 autoplay = "default"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_d3qc5")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="pressed" from="BackToMenu" to="." method="_on_button_pressed"]

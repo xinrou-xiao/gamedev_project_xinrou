@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmwncees7xvxf"]
+[gd_scene load_steps=16 format=3 uid="uid://cmwncees7xvxf"]
 
 [ext_resource type="FontFile" uid="uid://1h5vd3h4d4xg" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="1_hqv6c"]
 [ext_resource type="Script" uid="uid://cv7nak4c74nf" path="res://scirpts/won.gd" id="1_w8kld"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dfvtdbeuwqqny" path="res://assets/endings/escape-normal/escape-normal1.png" id="8_ieqll"]
 [ext_resource type="Texture2D" uid="uid://cqrvohhgq32br" path="res://assets/endings/escape-normal/escape-normal2.png" id="9_5eyun"]
 [ext_resource type="Texture2D" uid="uid://bqhjvg0hwhtw4" path="res://assets/endings/escape-normal/escape-normal3.png" id="10_fdtyl"]
+[ext_resource type="AudioStream" uid="uid://cma0n10lj4mk5" path="res://audio/all-i-do-is-win-323628.mp3" id="11_ieqll"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kg3bq"]
 shader = ExtResource("2_jc46y")
@@ -107,5 +108,10 @@ position = Vector2(1029, 399)
 scale = Vector2(0.361328, 0.340809)
 sprite_frames = SubResource("SpriteFrames_qeq1a")
 autoplay = "default"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_ieqll")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="pressed" from="BackToMenu" to="." method="_on_button_pressed"]
