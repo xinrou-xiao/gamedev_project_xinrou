@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://mu50rnecafq7"]
 
 [ext_resource type="Script" uid="uid://bjuva7l14y5ml" path="res://scirpts/main.gd" id="1_1j6d1"]
-[ext_resource type="PackedScene" uid="uid://bsrphuurxcwjy" path="res://scenes/theft.tscn" id="2_mqxhw"]
+[ext_resource type="PackedScene" uid="uid://bsrphuurxcwjy" path="res://scenes/thief.tscn" id="2_mqxhw"]
 [ext_resource type="Script" uid="uid://b3liuoddvd5ve" path="res://scirpts/hud.gd" id="3_3dblt"]
 [ext_resource type="FontFile" uid="uid://1h5vd3h4d4xg" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="4_blwv4"]
 [ext_resource type="PackedScene" uid="uid://ntfugx7a0r0e" path="res://scenes/floors/level1.tscn" id="5_nfa5d"]

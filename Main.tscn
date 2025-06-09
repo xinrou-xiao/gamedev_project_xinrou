@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://dr7w78ecq2lua" path="res://assets/frames/walls.tres" id="1_r0du0"]
 [ext_resource type="TileSet" uid="uid://46fwe7pv3qyo" path="res://assets/frames/furnitures.tres" id="2_cm0pq"]
-[ext_resource type="PackedScene" uid="uid://bsrphuurxcwjy" path="res://scenes/theft.tscn" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://bsrphuurxcwjy" path="res://scenes/thief.tscn" id="2_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://bij3wvljbins8" path="res://scenes/money_stack.tscn" id="4_cm0pq"]
 [ext_resource type="Script" uid="uid://pwleigi8p2n4" path="res://scirpts/elavator.gd" id="4_fos0i"]
 [ext_resource type="Script" path="res://hud.gd" id="6_trn2v"]
