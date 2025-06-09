@@ -69,7 +69,7 @@ offset_right = 864.0
 offset_bottom = 260.0
 theme_override_fonts/font = ExtResource("2_con2f")
 theme_override_font_sizes/font_size = 146
-text = "The Theft"
+text = "The Thief"
 
 [node name="Start" type="Button" parent="."]
 layout_mode = 0

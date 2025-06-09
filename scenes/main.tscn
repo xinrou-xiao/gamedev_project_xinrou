@@ -39,10 +39,10 @@ script = ExtResource("6_3dblt")
 position = Vector2(3990, -149)
 shape = SubResource("RectangleShape2D_blwv4")
 
-[node name="Theft" parent="." instance=ExtResource("2_mqxhw")]
+[node name="Thief" parent="." instance=ExtResource("2_mqxhw")]
 position = Vector2(3822, 305)
 
-[node name="Camera2D" type="Camera2D" parent="Theft"]
+[node name="Camera2D" type="Camera2D" parent="Thief"]
 position = Vector2(-43, 118)
 limit_left = 0
 limit_top = 0
